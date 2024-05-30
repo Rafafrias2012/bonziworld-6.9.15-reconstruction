@@ -1,0 +1,11 @@
+{
+  "port":3000,
+  "godword":"",
+  "kingword":"",
+  "altlimit": 2,
+  "slowmode": 1500,
+  "namelimit": 30,
+  "altslowmode": 10000,
+  "charlimit": 400,
+  "spamlimit": 3
+}
