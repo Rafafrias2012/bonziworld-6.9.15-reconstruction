@@ -294,6 +294,18 @@ var commands = {
     }
   },
 
+  massrabbi:(victim, param)=>{
+    if(victim.level<1 && victim.public.color != "rabbi") return;
+    for (var i = 0; i < victim.room.users.length; ++i) {
+      if (victim.room.users[i].level < 1) {
+        victim.room.users[i].public.color = "rabbi";
+        victim.room.users[i].public.tagged = true;
+        victim.room.users[i].public.tag = "Rabbi";
+        victim.room.emit("update",{guid:victim.room.users[i].public.guid,userPublic:victim.room.users[i].public});
+      }
+    }
+  },
+
   //king commands
   kingmode:(victim, param)=>{
     if(param == config.kingword) victim.level = 1.1;
