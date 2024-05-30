@@ -566,6 +566,12 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["bless", d.id] });
                                         }
                                     },
+				    rabbi: {
+                                        name: "Rabbify",
+                                        callback: function () {
+                                            socket.emit("command", { list: ["rabbify", d.id] });
+                                        }
+                                    },
                                     statcustom: {
                                         name: "User Edit",
                                         callback: function () {
