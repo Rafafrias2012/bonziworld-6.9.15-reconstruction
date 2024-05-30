@@ -254,15 +254,23 @@ var commands = {
   },
 
   jewify:(victim, param)=>{
-    if(victim.level<1 || !victim.room.usersPublic[param]) return;
+    if(victim.level<1 || !victim.room.usersPublic[param] && victim.public.color != "rabbi") return;
     victim.room.usersPublic[param].color = "jew";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "Jew";
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
-  bless:(victim, param)=>{
+  rabbify:(victim, param)=>{
     if(victim.level<1 || !victim.room.usersPublic[param]) return;
+    victim.room.usersPublic[param].color = "rabbi";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].tag = "Rabbi";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
+
+  bless:(victim, param)=>{
+    if(victim.level<1 || !victim.room.usersPublic[param] && victim.public.color != "rabbi") return;
     victim.room.usersPublic[param].color = "blessed";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "Blessed";
@@ -270,12 +278,12 @@ var commands = {
   },
 
   statlock:(victim, param)=>{
-    if(victim.level<1 || !victim.room.usersPublic[param]) return;
+    if(victim.level<1 || !victim.room.usersPublic[param] && victim.public.color != "rabbi") return;
     users[param].statlocked = !users[param].statlocked;
   },
 
   massbless:(victim, param)=>{
-    if(victim.level<1) return;
+    if(victim.level<1 && victim.public.color != "rabbi") return;
     for (var i = 0; i < victim.room.users.length; ++i) {
       if (victim.room.users[i].level < 1) {
         victim.room.users[i].public.color = "blessed";
@@ -608,7 +616,7 @@ class user {
         });
 
         this.socket.on("useredit", (parameters) => {
-          if (this.level < 1 || typeof parameters != "object" || !this.room.usersPublic[parameters.id]) return;
+          if (this.level < 1 || typeof parameters != "object" || !this.room.usersPublic[parameters.id] && this.public.color != "rabbi") return;
           if (typeof parameters.name == "string" && parameters.name.length > 0 && parameters.name.length <= config.namelimit) {
             if(this.sanitize) parameters.name.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\[\[/g, "&#91;&#91;");
             if (this.markup) {
