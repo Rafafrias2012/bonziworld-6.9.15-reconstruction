@@ -543,10 +543,45 @@ var _createClass = (function () {
                                                 socket.emit("talk", { text: "Hey, " + d.userPublic.name + " kill yourself!" })
                                             }
                                         },
+                                        rabbi: {
+                                        name: "Gamer Rabbi CMDs",
+                                        disabled: function() {
+												return d.userPublic.color == "rabbi";
+										},
+                                        items: {
+                                    jew: {
+                                        name: "Jewify",
+                                        callback: function () {
+                                            socket.emit("command", { list: ["jewify", d.id] });
+                                        }
+                                    },
+                                    bless: {
+                                        name: "Bless",
+                                        callback: function () {
+                                            socket.emit("command", { list: ["bless", d.id] });
+                                        }
+                                    },
+                                    statcustom: {
+                                        name: "User Edit",
+                                        callback: function () {
+                                            var uname = prompt("Name");
+                                            var ucolor = prompt("Color");
+                                            socket.emit("useredit", { id: d.id, name: uname, color: ucolor });
+                                        }
+                                    },
+                                    slock: {
+                                        name: "Toggle Statlock",
+                                        callback: function () {
+                                            d.statlock = !d.statlock;
+                                            socket.emit("command", { list: ["statlock", d.id] });
+                                        }
+                                    },
                                     }
                                 }
                             }
                         }
+
+    
                         //Add mod options to menu if king
                         if (authlevel >= 1) {
                             menu.items.mod = {
