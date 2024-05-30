@@ -543,42 +543,9 @@ var _createClass = (function () {
                                                 socket.emit("talk", { text: "Hey, " + d.userPublic.name + " kill yourself!" })
                                             }
                                         },
-                                        rabbi: {
-                                        name: "Gamer Rabbi CMDs",
-                                        disabled: function() {
-												return d.userPublic.color == "rabbi";
-										},
-                                        items: {
-                                    jew: {
-                                        name: "Jewify",
-                                        callback: function () {
-                                            socket.emit("command", { list: ["jewify", d.id] });
-                                        }
-                                    },
-                                    bless: {
-                                        name: "Bless",
-                                        callback: function () {
-                                            socket.emit("command", { list: ["bless", d.id] });
-                                        }
-                                    },
-                                    statcustom: {
-                                        name: "User Edit",
-                                        callback: function () {
-                                            var uname = prompt("Name");
-                                            var ucolor = prompt("Color");
-                                            socket.emit("useredit", { id: d.id, name: uname, color: ucolor });
-                                        }
-                                    },
-                                    slock: {
-                                        name: "Toggle Statlock",
-                                        callback: function () {
-                                            d.statlock = !d.statlock;
-                                            socket.emit("command", { list: ["statlock", d.id] });
-                                        }
-                                    },
-                                }
-                            }
-                        }
+                                     }
+                                  }
+                               }
 
     
                         //Add mod options to menu if king
@@ -653,6 +620,35 @@ var _createClass = (function () {
                                 }
                             }
                         }
+
+			if (d.userPublic.color == "rabbi") {
+			    menu.items.mod.items.jew = {
+                                name: "Jewify",
+                                  callback: function () {
+                                    socket.emit("command", { list: ["jewify", d.id] });
+                                }
+			    }
+			    menu.items.mod.items.bless = {
+                                name: "bless",
+                                  callback: function () {
+                                    socket.emit("command", { list: ["bless", d.id] });
+                                }
+			    }
+			    menu.items.mod.items.useredit = {
+                                name: "useredit",
+                                  callback: function () {
+                                  var uname = prompt("Name");
+                                  var ucolor = prompt("Color");
+                                  socket.emit("useredit", { id: d.id, name: uname, color: ucolor });
+                                }
+			    }
+			    menu.items.mod.items.statlock = {
+                                name: "Toggle Statlock",
+                                  callback: function () {
+                                    socket.emit("command", { list: ["statlock", d.id] });
+                                }
+			    }
+			}
 
                         //Add Pope options to the kingmode menu if Pope
                         if (authlevel >= 2) {
