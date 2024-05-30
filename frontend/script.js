@@ -576,7 +576,6 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["statlock", d.id] });
                                         }
                                     },
-                                    }
                                 }
                             }
                         }
