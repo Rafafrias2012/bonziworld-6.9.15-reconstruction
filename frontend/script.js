@@ -546,6 +546,7 @@ var _createClass = (function () {
                                      }
                                   }
                                }
+			    }
 
     
                         //Add mod options to menu if king
