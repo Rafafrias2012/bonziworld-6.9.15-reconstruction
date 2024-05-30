@@ -63,11 +63,6 @@ io.on("connection", (socket) => {
   //First, verify this user fits the alt limit
   if(typeof userips[IP] == 'undefined') userips[IP] = 0;
   userips[IP]++;
-  
-  if(userips[IP] > config.altlimit){
-    userips[IP]--;
-    return;
-  }
 
   if (motd.enabled) socket.emit("motd", motd.response);
 
