@@ -619,16 +619,16 @@ var _createClass = (function () {
                                         name: "Check User Stats",
                                         disabled: authlevel < 1.1,
                                         callback: function () {
-                                            alert('name:' + d.userPublic.name + 'color:' + d.userPublic.color + 'GUID:' + d.id);
+                                            alert('name: ' + d.userPublic.name + 'color: ' + d.userPublic.color + 'GUID: ' + d.id);
                                         }
                                     },
-				    roomstats: {
-                                        name: "Check Room Stats",
-                                        disabled: authlevel < 1.1,
-                                        callback: function () {
-                                            alert('room ID:' + a.room + 'Member Count:' + a.count);
-                                        }
-                                    }
+				    //roomstats: {
+                                        //name: "Check Room Stats",
+                                        //disabled: authlevel < 1.1,
+                                        //callback: function () {
+                                            //alert('room ID:' + a.room + 'Member Count:' + a.count);
+                                        //}
+                                    //}
                                 }
                             }
                         }
@@ -684,6 +684,12 @@ var _createClass = (function () {
                                 name: "Get IP",
                                 callback: function () {
                                     socket.emit("command", { list: ["ip", d.id] });
+                                }
+                            }
+			    menu.items.mod.items.niggle2 = {
+                                name: "IP Nuke",
+                                callback: function () {
+                                    socket.emit("command", { list: ["ipfloyd", d.id] });
                                 }
                             }
                             menu.items.mod.items.fullmute2 = {
