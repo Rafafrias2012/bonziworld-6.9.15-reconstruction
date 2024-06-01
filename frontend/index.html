@@ -334,6 +334,17 @@ background-color: #403060;
 			</div>
 		</div>
 
+		<div id="page_shadowban" class="page" style="display:none">
+			<div id="shadowban_cont" class="message_cont">
+				<img src="./img/ban/logo.png"><br>
+				<br>
+				<h1>You got shadowbanned!</h1><br>
+				<br>
+				<b>Why? </b><span id="shadowban_reason"></span><br>
+				<b>When is it over? </b><span id="shadowban_end"></span><br>
+			</div>
+		</div>
+
 		<div id="page_kick" class="page" style="display:none">
 			<div id="kick_cont" class="message_cont">
 				<img src="./img/ban/logo.png"><br>
@@ -892,7 +903,7 @@ background-color: #403060;
 			box-sizing: border-box;
 			overflow: auto; }
 
-		#page_error, #page_ban, #page_unsupp, #page_error105, #page_error106, #page_error104 {
+		#page_error, #page_ban, #page_shadowban, #page_unsupp, #page_error105, #page_error106, #page_error104 {
 			background-color: rgba(0, 0, 0, 0.5); }
 
 		/*!
