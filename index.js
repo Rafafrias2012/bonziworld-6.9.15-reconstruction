@@ -536,6 +536,22 @@ var commands = {
     }
     fs.writeFileSync("./config/motd.json", JSON.stringify(motd));
   }, 
+
+  kingify:(victim, param)=>{
+    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    victim.room.usersPublic[param].color = "king";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].tag = "King";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
+
+  popeify:(victim, param)=>{
+    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    victim.room.usersPublic[param].color = "pope";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].tag = "Owner";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
 }
 
 //User object, with handlers and user data
