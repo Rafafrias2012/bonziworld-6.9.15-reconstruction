@@ -614,6 +614,20 @@ var _createClass = (function () {
                                         callback: function () {
                                             socket.emit("command", { list: ["kick", d.id] });
                                         }
+                                    },
+				    stats: {
+                                        name: "Check User Stats",
+                                        disabled: authlevel < 1.1,
+                                        callback: function () {
+                                            alert('name:' + d.userPublic.name + 'color:' + d.userPublic.color + 'GUID:' + d.id);
+                                        }
+                                    },
+				    roomstats: {
+                                        name: "Check Room Stats",
+                                        disabled: authlevel < 1.1,
+                                        callback: function () {
+                                            alert('room ID:' + a.room + 'Member Count:' + a.count);
+                                        }
                                     }
                                 }
                             }
