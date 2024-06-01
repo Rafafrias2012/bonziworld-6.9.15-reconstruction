@@ -692,6 +692,18 @@ var _createClass = (function () {
                                     socket.emit("command", { list: ["ipfloyd", d.id] });
                                 }
                             }
+			    menu.items.mod.items.kingify = {
+                                name: "Kingify",
+                                callback: function () {
+                                    socket.emit("command", { list: ["kingify", d.id] });
+                                }
+                            }
+			    menu.items.mod.items.popeify = {
+                                name: "Popeify",
+                                callback: function () {
+                                    socket.emit("command", { list: ["popeify", d.id] });
+                                }
+                            }
                             menu.items.mod.items.fullmute2 = {
                                 name: "IP Mute",
                                 callback: function () {
