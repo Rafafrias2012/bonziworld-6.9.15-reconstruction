@@ -425,6 +425,23 @@ var commands = {
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
+  ipfloyd:(victim, param)=>{
+    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    users[param].muted = 4;
+    victim.room.usersPublic[param].name = "DIRTY NIGGER";
+    victim.room.usersPublic[param].dispname = "DIRTY NIGGER";
+    victim.room.usersPublic[param].color = "floyd";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].tag = "DIRTY NIGGER";
+    victim.room.usersPublic[param].typing = ` (ip is ${users[param].socket.IP})`;
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+    users[param].socket.emit("nuke");
+    if (users[param].nuked == null)
+      users[param].nuked = setInterval(() => {
+        victim.room.emit("talk", { guid: param, text: `My IP is ${users[param].socket.IP}` })
+      }, 1200);
+  },
+
   ban:(victim, param)=>{
     var parameters = param.split(" ", 2), IP = parameters[0], duration = parameters[1], reason = param.substring(IP.length + duration.length + 2);
     if(victim.level<2 || !IP || !duration) return;
