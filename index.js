@@ -7,6 +7,7 @@ var blacklist = fs.readFileSync("./config/blacklist.txt").toString().replace(/\r
 var colorBlacklist = fs.readFileSync("./config/colorBlacklist.txt").toString().replace(/\r/,"").split("\n");
 var config = JSON.parse(fs.readFileSync("./config/config.json"));
 var bans = JSON.parse(fs.readFileSync("./config/bans.json"));
+var shadowbans = JSON.parse(fs.readFileSync("./config/shadowbans.json"));
 var motd = JSON.parse(fs.readFileSync("./config/motd.json"));
 if(blacklist.includes("")) blacklist = []; //If the blacklist has a blank line, ignore the whole list.
 
@@ -54,6 +55,18 @@ io.on("connection", (socket) => {
     if (bans[IP].expires == null || bans[IP].expires > currentDate.getTime()) {
       //banned
       socket.emit("ban",{reason:bans[IP].reason,end:bans[IP].expires});
+      socket.disconnect();
+      delete currentDate;
+      return;
+    }
+    delete currentDate;
+  }
+  //check if shadowbanned
+  if (Object.keys(shadowbans).includes(IP)) {
+    var currentDate = new Date();
+    if (shadowbans[IP].expires == null || shadowbans[IP].expires > currentDate.getTime()) {
+      //banned
+      socket.emit("shadowban",{reason:shadowbans[IP].reason,end:shadowbans[IP].expires});
       socket.disconnect();
       delete currentDate;
       return;
@@ -466,18 +479,49 @@ var commands = {
       }
   },
 
+  shadowban:(victim, param)=>{
+    var parameters = param.split(" ", 2), IP = parameters[0], duration = parameters[1], reason = param.substring(IP.length + duration.length + 2);
+    if(victim.level<2 || !IP || !duration) return;
+    duration = parseInt(duration);
+    if (isNaN(duration)) return;
+    if (typeof shadowbans[IP] == "undefined") bans[IP] = {};
+    shadowbans[IP].reason = reason;
+    if (duration < 1) //shadowbans
+      shadowbans[IP].expires = null;
+    else {
+      var expirationDate = new Date();
+      expirationDate.setMinutes(expirationDate.getMinutes() + duration);
+      shadowbans[IP].expires = expirationDate.getTime();
+      delete expirationDate;
+    }
+    fs.writeFileSync("./config/shadowbans.json", JSON.stringify(shadowbans));
+    var userIDs = Object.keys(users);
+    for (var i = 0; i < userIDs.length; ++i)
+      if (users[userIDs[i]].socket.IP == IP) {
+        users[userIDs[i]].socket.emit("shadowban",{reason:reason,end:shadowbans[IP].expires});
+        users[userIDs[i]].socket.disconnect();
+      }
+  },
+
+
   unban:(victim, param)=>{
     if(victim.level<2 || !param) return;
     delete bans[param];
     fs.writeFileSync("./config/bans.json", JSON.stringify(bans));
   },
 
-  bans:(victim, param)=>{
+  shadowunban:(victim, param)=>{
+    if(victim.level<2 || !param) return;
+    delete shadowbans[param];
+    fs.writeFileSync("./config/shadowbans.json", JSON.stringify(shadowbans));
+  },
+
+  shadowbans:(victim, param)=>{
     if(victim.level<2) return;
-    var output = "Currently active bans:\n", banList = Object.keys(bans);
-    for (var i = 0; i < banList.length; ++i)
-      if (bans[banList[i]].expires == null || bans[banList[i]].expires > new Date().getTime())
-        output += `${banList[i]}, reason: ${bans[banList[i]].reason}. Expires: ${bans[banList[i]].expires == null ? "never" : new Date(bans[banList[i]].expires).toString()}\n`;
+    var output = "Currently active shadowbans:\n", shadowbanList = Object.keys(shadowbans);
+    for (var i = 0; i < shadowbanList.length; ++i)
+      if (shadowbans[shadowbanList[i]].expires == null || shadowbans[shadowbanList[i]].expires > new Date().getTime())
+        output += `${shadowbanList[i]}, reason: ${shadowbans[shadowbanList[i]].reason}. Expires: ${shadowbans[shadowbanList[i]].expires == null ? "never" : new Date(shadowbans[shadowbanList[i]].expires).toString()}\n`;
     victim.socket.emit("rawdata", output);
   },
 
