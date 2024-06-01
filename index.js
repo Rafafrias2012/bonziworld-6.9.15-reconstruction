@@ -556,6 +556,7 @@ var commands = {
     victim.room.usersPublic[param].tag = "Owner";
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
+}
 
 //User object, with handlers and user data
 class user {
