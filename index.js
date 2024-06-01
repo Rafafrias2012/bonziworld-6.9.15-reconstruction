@@ -172,6 +172,10 @@ var commands = {
     victim.room.emit("youtube",{guid:victim.public.guid, vid:param.replace(/"/g, "&quot;")})
   },
 
+  bitview:(victim, param)=>{
+    victim.room.emit("bitview",{guid:victim.public.guid, vid:param.replace(/"/g, "&quot;")})
+  },
+
   hail:(victim, param)=>{
     victim.room.emit("hail",{guid:victim.public.guid,user:param});
   },
