@@ -232,6 +232,10 @@ function setup() {
             var b = bonzis[a.guid];
             b.cancel(), b.youtube(a.vid);
         }),
+	socket.on("bitview", function (a) {
+            var b = bonzis[a.guid];
+            b.cancel(), b.bitview(a.vid);
+        }),
         socket.on("hail", function (a) {
             var b = bonzis[a.guid];
             b.runSingleEvent([{ type: "anim", anim: "bow_fwd", ticks: 20 }, { type: "text", text: "HEIL " + a.user }, { type: "idle" }])
@@ -977,6 +981,15 @@ var _createClass = (function () {
                                 ">\n\t\t\t\t"
                             ),
                                 this.$dialog.show();
+                        }
+                    },
+                },
+		{
+                    key: "bitview",
+                    value: function (a) {
+                        if (!this.mute) {
+                            var b = "embed";
+                            this.$dialogCont.html("<iframe id='embedplayer' src='http://www.bitview.net/embed.php?v=" + a + "'' width='448' height='382' allowfullscreen scrolling='off' frameborder='0'></iframe>"), this.$dialog.show();
                         }
                     },
                 },
