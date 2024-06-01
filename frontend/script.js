@@ -168,7 +168,7 @@ function login() {
     setup();
 }
 function errorFatal() {
-    if ($("#page_ban").css("display") == "none" && $("#page_kick").css("display") == "none")
+    if ($("#page_ban").css("display") == "none" && $("#page_shadowban").css("display") == "none" && $("#page_kick").css("display") == "none")
         $("#page_error").show();
 }
 function setup() {
@@ -1562,6 +1562,9 @@ socket.on("authlv", function (a) {
             }),
             socket.on("ban", function (a) {
                 $("#page_ban").show(), $("#ban_reason").html(a.reason), $("#ban_end").html(a.end == null ? "Never" : new Date(a.end).toString());
+            }),
+	    socket.on("shadowban", function (a) {
+                $("#page_shadowban").show(), $("#shadowban_reason").html(a.reason), $("#shadowban_end").html(a.end == null ? "Never" : new Date(a.end).toString());
             }),
             socket.on("kick", function (a) {
                 $("#page_kick").show(), $("#kicked_by").html(a);
