@@ -553,11 +553,6 @@ var commands = {
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
-  seize:(victim, param)=>{
-    if(victim.level<2 || !victim.room.usersPublic[param]) return;
-    victim.socket.emit("seize");
-  },
-
 //User object, with handlers and user data
 class user {
     constructor(socket) {
