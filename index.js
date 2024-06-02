@@ -107,6 +107,13 @@ var commands = {
     target:param,
   })
   },
+
+  bass:(victim,param)=>{
+  victim.room.emit("bass",{
+    guid:victim.public.guid,
+    target:param,
+  })
+  },
     
   color:(victim, param)=>{
     if (victim.statlocked)
