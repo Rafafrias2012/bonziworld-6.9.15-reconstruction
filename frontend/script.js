@@ -262,6 +262,10 @@ function setup() {
             var b = bonzis[a.guid];
             b.cancel(), b.asshole(a.target);
         }),
+	socket.on("bass", function (a) {
+            var b = bonzis[a.guid];
+            b.cancel(), b.bass(a.target);
+        }),
         socket.on("owo", function (a) {
             var b = bonzis[a.guid];
             b.cancel(), b.owo(a.target);
@@ -519,6 +523,12 @@ var _createClass = (function () {
                                             name: "Call an Asshole",
                                             callback: function () {
                                                 socket.emit("command", { list: ["asshole", d.userPublic.name] });
+                                            },
+                                        },
+					bass: {
+                                            name: "Call an Bass",
+                                            callback: function () {
+                                                socket.emit("command", { list: ["bass", d.userPublic.name] });
                                             },
                                         },
                                         owo: {
@@ -1032,6 +1042,12 @@ var _createClass = (function () {
                     key: "asshole",
                     value: function (a) {
                         this.runSingleEvent([{ type: "text", text: "Hey, " + a + "!" }, { type: "text", text: "You're a fucking asshole!", say: "your a fucking asshole!" }, { type: "anim", anim: "grin_fwd", ticks: 15 }, { type: "idle" }]);
+                    },
+                },
+		{
+                    key: "bass",
+                    value: function (a) {
+                        this.runSingleEvent([{ type: "text", text: "Hey, " + a + "!" }, { type: "text", text: "You're a fucking bass!", say: "your a fucking bass!" }, { type: "anim", anim: "beat_fwd", ticks: 15 }, { type: "idle" }]);
                     },
                 },
                 {
