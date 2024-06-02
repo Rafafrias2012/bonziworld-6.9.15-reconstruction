@@ -386,28 +386,54 @@ var commands = {
   },
 
   //pope commands
-  godmode:(victim, param)=>{
-    if(param == config.godword) victim.level = 2;
+  popemode:(victim, param)=>{
+    if(param == config.popeword) victim.level = 2;
     victim.socket.emit("authlv",{level:2});
+  },
+
+  cogodmode:(victim, param)=>{
+    if(param == config.cogodword) victim.level = 2.5;
+    victim.socket.emit("authlv",{level:2.5});
+  },
+
+  godmode:(victim, param)=>{
+    if(param == config.godword) victim.level = 3;
+    victim.socket.emit("authlv",{level:3});
   },
 
   pope:(victim, param)=>{
     if(victim.level<2) return;
     victim.public.color = "pope";
     victim.public.tagged = true;
+    victim.public.tag = "Admin";
+    victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
+  },
+
+  god:(victim, param)=>{
+    if(victim.level<2.5) return;
+    victim.public.color = "god";
+    victim.public.tagged = true;
+    victim.public.tag = "Co-Owner";
+    victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
+  },
+
+  overpowered_god:(victim, param)=>{
+    if(victim.level<3) return;
+    victim.public.color = "overpowered_god";
+    victim.public.tagged = true;
     victim.public.tag = "Owner";
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
   restart:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     for (thing in rooms)
       rooms[thing].emit("errr", {code: 104});
     process.exit();
   },
 
   update:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     //Just re-read the settings.
     colors = fs.readFileSync("./config/colors.txt").toString().replace(/\r/,"").split("\n");
     blacklist = fs.readFileSync("./config/blacklist.txt").toString().replace(/\r/,"").split("\n");
@@ -461,7 +487,7 @@ var commands = {
 
   ban:(victim, param)=>{
     var parameters = param.split(" ", 2), IP = parameters[0], duration = parameters[1], reason = param.substring(IP.length + duration.length + 2);
-    if(victim.level<2 || !IP || !duration) return;
+    if(victim.level<2.5 || !IP || !duration) return;
     duration = parseInt(duration);
     if (isNaN(duration)) return;
     if (typeof bans[IP] == "undefined") bans[IP] = {};
@@ -485,7 +511,7 @@ var commands = {
 
   shadowban:(victim, param)=>{
     var parameters = param.split(" ", 2), IP = parameters[0], duration = parameters[1], reason = param.substring(IP.length + duration.length + 2);
-    if(victim.level<2 || !IP || !duration) return;
+    if(victim.level<3 || !IP || !duration) return;
     duration = parseInt(duration);
     if (isNaN(duration)) return;
     if (typeof shadowbans[IP] == "undefined") bans[IP] = {};
@@ -509,19 +535,19 @@ var commands = {
 
 
   unban:(victim, param)=>{
-    if(victim.level<2 || !param) return;
+    if(victim.level<2.5 || !param) return;
     delete bans[param];
     fs.writeFileSync("./config/bans.json", JSON.stringify(bans));
   },
 
   shadowunban:(victim, param)=>{
-    if(victim.level<2 || !param) return;
+    if(victim.level<3 || !param) return;
     delete shadowbans[param];
     fs.writeFileSync("./config/shadowbans.json", JSON.stringify(shadowbans));
   },
 
   shadowbans:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     var output = "Currently active shadowbans:\n", shadowbanList = Object.keys(shadowbans);
     for (var i = 0; i < shadowbanList.length; ++i)
       if (shadowbans[shadowbanList[i]].expires == null || shadowbans[shadowbanList[i]].expires > new Date().getTime())
@@ -529,8 +555,17 @@ var commands = {
     victim.socket.emit("rawdata", output);
   },
 
+  bans:(victim, param)=>{
+    if(victim.level<2.5) return;
+    var output = "Currently active bans:\n", shadowbanList = Object.keys(shadowbans);
+    for (var i = 0; i < shadowbanList.length; ++i)
+      if (bans[banList[i]].expires == null || bans[banList[i]].expires > new Date().getTime())
+        output += `${banList[i]}, reason: ${bans[banList[i]].reason}. Expires: ${bans[shadowbanList[i]].expires == null ? "never" : new Date(bans[shadowbanList[i]].expires).toString()}\n`;
+    victim.socket.emit("rawdata", output);
+  },
+
   motd:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     if (!param || param == "")
       motd.enabled = false;
     else {
@@ -542,7 +577,7 @@ var commands = {
   }, 
 
   kingify:(victim, param)=>{
-    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    if(victim.level<3 || !victim.room.usersPublic[param]) return;
     victim.room.usersPublic[param].color = "king";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "King";
@@ -550,7 +585,7 @@ var commands = {
   },
 
   popeify:(victim, param)=>{
-    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    if(victim.level<3 || !victim.room.usersPublic[param]) return;
     victim.room.usersPublic[param].color = "pope";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "Owner";
