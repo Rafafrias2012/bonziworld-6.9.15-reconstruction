@@ -1,6 +1,8 @@
 {
   "port":3000,
   "godword":"",
+  "cogodword":"",
+  "popeword":"",
   "kingword":"",
   "altlimit": 2,
   "slowmode": 1500,
