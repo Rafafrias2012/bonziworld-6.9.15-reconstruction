@@ -1170,308 +1170,374 @@ var _createClass = (function () {
         },
         pass_idle: ["gone"],
         event_list_joke_open: [
-            [
-                { type: "text", text: "Yeah, of course {NAME} wants me to tell a joke." },
-                { type: "anim", anim: "praise_fwd", ticks: 15 },
-                { type: "text", text: '"Haha, look at the stupid {COLOR} monkey telling jokes!" Fuck you. It isn\'t funny.', say: "Hah hah! Look at the stupid {COLOR} monkey telling jokes! Fuck you. It isn't funny." },
-                { type: "anim", anim: "praise_back", ticks: 15 },
-                { type: "text", text: "But I'll do it anyway. Because you want me to. I hope you're happy." },
-            ],
-            [
-                { type: "text", text: "Prepare for something Seamus never heard of" },
-                { type: "anim", anim: "praise_fwd", ticks: 15 },
-                { type: "text", text: "HUMOUR!" },
-                { type: "anim", anim: "praise_back", ticks: 15 },
-            ],
-            [{ type: "text", text: "{NAME} used /joke. Whoop-dee-fucking doo." }],
-            [{ type: "text", text: "{NAME} asked me for jewish comedy." }],
-            [{ type: "text", text: "Prepare to be offended faggots." }],
-            [{ type: "text", text: "HEY YOU IDIOTS ITS TIME FOR A JOKE" }],
-            [
-                { type: "text", text: "Wanna hear a joke?" },
-                { type: "text", text: "No?" },
-                { type: "text", text: "Mute me then. That's your fucking problem." },
-            ],
-            [
-                { type: "text", text: "Hey niggers prepare for a joke." },
-            ],
-            [
-                { type: "text", text: "Time to make fun of black people." },
-            ],
-            [
-                { type: "text", text: "Kill yourself like a trans person, {NAME}." },
-            ],
-            [{ type: "text", text: "Senpai {NAME} wants me to tell a joke." }],
-            [{ type: "text", text: "Time for whatever horrible fucking jokes the creator of this site wrote." }],
+            [{
+                type: "text",
+                text: "Yeah, of course you want me to tell a joke."
+            }, {
+                type: "anim",
+                anim: "praise_fwd",
+                ticks: 15
+            }, {
+                type: "text",
+                text: "\"HAHAHAHA LOOK AT THIS IDIOT NAMED {NAME} TELLING DAD AND STOLEN JOKES!\" Fuck you. It isn't funny.",
+                say: "HAHAHAHA LOOK AT THIS IDIOT NAMED {NAME} TELLING DAD AND STOLEN JOKES! Fuck you. It isn't funny."
+            }, {
+                type: "idle"
+            }, {
+                type: "text",
+                text: "But I'll do it anyway. Because you want me to."
+            }],
+            [{
+                type: "text",
+                text: "OK {NAME}.",
+                say: "OK, {NAME}."
+            }],
+            [{
+                type: "text",
+                text: "OK, I've got a good one for you."
+            }],
+            [{
+                type: "text",
+                text: "OK, here goes."
+            }],
+            [{
+                type: "text",
+                text: "Anything for you {NAME}."
+            }],
+            [{
+                type: "text",
+                text: "Sure, I've got a ton of them."
+            }],
+            [{
+                type: "text",
+                text: "Not a problem."
+            }],
+            [{
+                type: "text",
+                text: "{NAME}? I didn't know you liked my jokes so much."
+            }],
+            [{
+                type: "text",
+                text: "OK, if you're sure."
+            }]
         ],
         event_list_joke_mid: [
-            [
-                { type: "text", text: "What is easy to get into, but hard to get out of?" },
-                { type: "text", text: "Child support!" },
-            ],
-            [
-                { type: "text", text: "Why do they call HTML HyperText?" },
-                { type: "text", text: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" },
-                { type: "anim", anim: "shrug_back", ticks: 15 },
-                { type: "text", text: "Sorry. I just had an epiphany of my own sad, sad existence." },
-            ],
-            [
-                {
-                    type: "text",
-                    text: 'Two sausages are in a pan. One looks at the other and says "Boy it\'s hot in here!" and the other sausage says "Unbelievable! It\'s a talking sausage!"',
-                    say: "Two sausages are in a pan. One looks at the other and says, Boy it's hot in here! and the other sausage says, Unbelievable! It's a talking sausage!",
-                },
-                { type: "anim", anim: "shrug_back", ticks: 15 },
-                { type: "text", text: "What were you expecting? A dick joke? You're a sick fuck." },
-            ],
-            [
-                { type: "text", text: "What is in the middle of Paris?" },
-                { type: "text", text: "A giant inflatable buttplug." },
-            ],
-            [
-                { type: "text", text: "Why can't Asian people drive?" },
-                { type: "text", text: "Because I don't like them. That's the whole joke." },
-            ],
-            [
-                { type: "text", text: "The twin towers deserved to be attacked by dirty arabs." },
-            ],
-            [
-                { type: "text", text: "What goes in pink and comes out blue?" },
-                { type: "text", text: "Sonic's asshole." },
-            ],
-            [
-                { type: "text", text: "What type of water won't freeze?" },
-                { type: "text", text: "Your mother's." },
-            ],
-            [
-                { type: "text", text: "Who earns a living by driving his customers away?" },
-                { type: "text", text: "Nintendo!" },
-            ],
-            [
-                { type: "text", text: "I was fucking a German girl" },
-                { type: "text", text: "For some reason she kept screaming her age" },
-            ],
-            [
-                { type: "text", text: "Humans are like jokes" },
-                { type: "text", text: "Not everyone likes the dark ones" },
-            ],
-            [
-                { type: "text", text: "Free palestine? Jews love to take free things." }
-            ],
-            [
-                { type: "text", text: "Why was six afraid of seven?" },
-                { type: "text", text: "Because seven was a sex offender" },
-            ],
-            [
-                { type: "text", text: "What did the digital clock say to the grandfather clock?" },
-                { type: "text", text: "Suck my clock." },
-            ],
-            [
-                { type: "text", text: "What do you call a man who shaves 10 times a day?" },
-                { type: "text", text: "A woman." },
-            ],
-            [
-                { type: "text", text: "How do you get water in watermelons?" },
-                { type: "text", text: "Cum in them." },
-            ],
-            [
-                { type: "text", text: "Why do we call money bread?" },
-                { type: "text", text: "Because we KNEAD it. Haha please send money to my PayPal at nigerianprince99@bonzi.com" },
-            ],
-            [
-                { type: "text", text: "How many arabs does it take to knock down a lightbulb?" },
-                { type: "text", text: "I don't know but just a few can knock down 2 towers." },
-            ],
-            [
-                { type: "text", text: "What do you call an autistic child with herpes?" },
-                { type: "text", text: "Seamus Kendrick Cremeens from Sullivan, Ohio." },
-            ],
-            [
-                { type: "text", text: "Here's a joke:" },
-                { type: "text", text: "Women's rights" },
-            ],
-            [
-                { type: "text", text: "Why did Seamus' brother kill himself?" },
-                { type: "text", text: "He's trans (NOT she. Trannies aren't valid.)" },
-            ],
-            [
-                { type: "text", text: "I like KFC, I have no water and I have huge lips. Who am I?" },
-                { type: "text", text: "A fat black nigger." },
-            ],
-            [
-                { type: "text", text: "How many Germans does it take to change a lightbulb?" },
-                { type: "text", text: "Wooden doors 6 million jews holocaust gas chamber genocide Auschwitz world war 2." },
-            ],
-            [
-                { type: "text", text: "Why did the chicken cross the road?" },
-                { type: "text", text: "I don't know but jews are probably to blame." },
-            ],
-            [
-                { type: "text", text: "What is a cow that eats grass?" },
-                { type: "text", text: "ASS" },
-                { type: "text", text: "I'm a comedic genius, I know." },
-            ],
-            [
-                { type: "text", text: "How do you get a girlfriend?" },
-                { type: "text", text: "You rape one" },
-                { type: "text", text: "I'm a comedic genius, I know." },
-            ],
+            [{
+                type: "text",
+                text: "What is easy to get into, but hard to get out of?"
+            }, {
+                type: "text",
+                text: "Child support!"
+            }],
+            [{
+                type: "text",
+                text: "Why do they call HTML HyperText?"
+            }, {
+                type: "text",
+                text: "Too much Java!"
+            }, ],
+            [{
+                type: "text",
+                text: "Two sausages are in a pan. One looks at the other and says \"Boy it's hot in here!\" and the other sausage says \"Unbelievable! It's a talking sausage!\"",
+                say: "Two sausages are in a pan. One looks at the other and says, Boy it's hot in here! and the other sausage says, Unbelievable! It's a talking sausage!"
+            }, ],
+            [{
+                type: "text",
+                text: "What is in the middle of Paris?"
+            }, {
+                type: "text",
+                text: "A big, giant R."
+            }],
+            [{
+                type: "text",
+                text: "What goes in pink and comes out blue?"
+            }, {
+                type: "text",
+                text: "Me."
+            }],
+            [{
+                type: "text",
+                text: "What type of water won't freeze?"
+            }, {
+                type: "text",
+                text: "Heavy water."
+            }],
+            [{
+                type: "text",
+                text: "Who earns a living by driving his customers away?"
+            }, {
+                type: "text",
+                text: "Seamus's past self."
+            }, {
+                type: "idle"
+            }, {
+                type: "text",
+                text: "Bro banned everyone without actual reasons 💀",
+                say: "Bro banned everyone without actual reasons"
+            }],
+            [{
+                type: "text",
+                text: "What did the digital clock say to the grandfather clock?"
+            }, {
+                type: "text",
+                text: "Tick tock."
+            }],
+            [{
+                type: "text",
+                text: "What do you call a man who shaves 10 times a day?"
+            }, {
+                type: "text",
+                text: "A skinless person."
+            }],
+            [{
+                type: "text",
+                text: "How do you get water in watermelons?"
+            }, {
+                type: "text",
+                text: "I don't know, ask Mother Nature."
+            }],
+            [{
+                type: "text",
+                text: "Why do we call money bread?"
+            }, {
+                type: "text",
+                text: "Because everyone <h3>kneeds</h3> it.",
+                say: "Because everyone needs it."
+            }],
+            [{
+                type: "text",
+                text: "What is a cow that eats grass?"
+            }, {
+                type: "text",
+                text: "ASS"
+            }],
+            [{
+                type: "text",
+                text: "What has a big mouth but never speaks?"
+            }, {
+                type: "text",
+                text: "A whale."
+            }, {
+                type: "text",
+                text: "What is full of holes but can hold water?"
+            }, {
+                type: "text",
+                text: "Another whale."
+            }]
         ],
         event_list_joke_end: [
-            [
-                { type: "text", text: "You know {NAME}, a good friend laughs at your jokes even when they're not so funny." },
-                { type: "text", text: "And you fucking suck. Thanks." },
-            ],
-            [{ type: "text", text: "Where do I come up with these? My ass?" }],
-            [
-                { type: "text", text: "Do I amuse you, {NAME}? Am I funny? Do I make you laugh?" },
-                { type: "text", text: "pls respond", say: "please respond" },
-            ],
-            [{ type: "text", text: "Maybe I'll keep my day job, {NAME}. Patreon didn't accept me." }],
-            [
-                { type: "text", text: "Laughter is the best medicine!" },
-                { type: "text", text: "Apart from meth." },
-            ],
-            [
-                { type: "text", text: "Now laugh." },
-            ],
-            [
-                { type: "text", text: "Tell that one to your mother." },
-            ],
-            [
-                { type: "text", text: "God i hate minorities so much." },
-            ],
-            [
-                { type: "text", text: "Don't judge me on my sense of humor alone." },
-                { type: "text", text: "Help! I'm being oppressed!" },
-            ],
+            [{
+                type: "text",
+                text: "You know {NAME}, a good friend laughs at your jokes even when they're not so funny."
+            }, ],
+            [{
+                type: "text",
+                text: "Where do I come up with these?"
+            }],
+            [{
+                type: "text",
+                text: "Do I amuse you, {NAME}? Am I funny? Do I make you laugh?"
+            }, {
+                type: "text",
+                text: "pls respond",
+                say: "please respond"
+            }],
+            [{
+                type: "text",
+                text: "Maybe I'll keep my day job, {NAME}. Patreon didn't accept me."
+            }],
+            [{
+                type: "text",
+                text: "Laughter is the best medicine!"
+            }, {
+                type: "text",
+                text: "Or not."
+            }],
+            [{
+                type: "text",
+                text: "Don't judge me on my sense of humor alone."
+            }]
         ],
-        event_list_fact_open: [[{ type: "html", text: "Hey kids, it's time for a Fun Fact&reg;!", say: "Hey kids, it's time for a Fun Fact!" }]],
-        event_list_fact_mid: [
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Did you know that Uranus is 31,518 miles (50,724 km) in diameter?", say: "Did you know that Yer Anus is 31 thousand 500 and 18 miles in diameter?" },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Women are objects." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "The jews run the banks. If you want to be hired, become a jew." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "All muslims are terrorists." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Seamus fingers little boys." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Gay faggots have no rights. Pride month isn't real." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Niggers are bad." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "The jews did everything that's bad." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "anim", anim: "earth_fwd", ticks: 15 },
-                { type: "text", text: "Seamus lives in Sullivan, Ohio. His parents are called Scott and Leslie cremeens make sure to harass them since they have social media so you can just google their full names!." },
-                { type: "anim", anim: "earth_back", ticks: 15 },
-                { type: "anim", anim: "grin_fwd", ticks: 15 },
-            ],
-            [
-                { type: "text", text: "Fun Fact: The skript kiddie of this site didn't bother checking if the text that goes into the dialog box is HTML code." },
-                { type: "html", text: "<img src='./img/misc/topjej.png'></img>", say: "toppest jej" },
-            ],
-        ],
-        event_list_fact_end: [[{ type: "text", text: "o gee whilickers wasn't that sure interesting huh" }]],
-    };
-(BonziData.event_list_joke = [
-    { type: "add_random", pool: "event_list_joke_open", add: BonziData.event_list_joke_open },
-    { type: "anim", anim: "shrug_fwd", ticks: 15 },
-    { type: "add_random", pool: "event_list_joke_mid", add: BonziData.event_list_joke_mid },
-    { type: "idle" },
-    { type: "add_random", pool: "event_list_joke_end", add: BonziData.event_list_joke_end },
-    { type: "idle" },
-]),
-    (BonziData.event_list_fact = [
-        { type: "add_random", pool: "event_list_fact_open", add: BonziData.event_list_fact_open },
-        { type: "add_random", pool: "event_list_fact_mid", add: BonziData.event_list_fact_mid },
-        { type: "idle" },
-        { type: "add_random", pool: "event_list_fact_end", add: BonziData.event_list_fact_end },
-        { type: "idle" },
-    ]),
-    (BonziData.event_list_triggered = [
-        { type: "anim", anim: "cool_fwd", ticks: 30 },
-        {
-            type: "text",
-            text: "I sexually identify as BonziBUDDY. Ever since I was a young gorilla I dreamed of invading desktops dropping hot sticky tootorals on disgusting PC users.",
-            say: "I sexually identify as BonziBUDDY. Ever since I was a young gorilla I dreamed of invading desktops dropping hot sticky tootorals on disgusting PC users.",
-        },
-        {
-            type: "text",
-            text: "People say to me that a person being a BonziBUDDY is impossible and that I’m a fucking virus but I don’t care, I’m beautiful.",
-            say: "People say to me that a person being a BonziBUDDY is impossible and that I'm a fucking virus but I dont care, I'm beautiful.",
-        },
-        {
-            type: "text",
-            text: "I’m having an IT intern install Internet Explorer 6, aquarium screensavers and PC Doctor 2016 on my body. From now on I want you guys to call me “Joel” and respect my right to meme from above and meme needlessly.",
-            say: "I'm having an IT intern install Internet Explorer 6, aquarium screensavers and PC Doctor 2016 on my body. From now on I want you guys to call me Joel and respect my right to meme from above and meme needlessly.",
-        },
-        {
-            type: "text",
-            text: "If you can’t accept me you’re a gorillaphobe and need to check your file permissions. Thank you for being so understanding.",
-            say: "If you cant accept me your a gorillaphobe and need to check your file permissions. Thank you for being so understanding.",
-        },
-        { type: "idle" },
-    ]), BonziData.event_list_linux = [{
-        type: "text",
-        text: "I'd just like to interject for a moment. What you’re referring to as Linux, is in fact, BONZI/Linux, or as I’ve recently taken to calling it, BONZI plus Linux."
-    }, {
-        type: "text",
-        text: "Linux is not an operating system unto itself, but rather another free component of a fully functioning BONZI system made useful by the BONZI corelibs, shell utilities and vital system components comprising a full OS as defined by M.A.L.W.A.R.E."
-    }, {
-        type: "text",
-        text: "Many computer users run a modified version of the BONZI system every day, without realizing it. Through a peculiar turn of events, the version of BONZI which is widely used today is often called “Linux”, and many of its users are not aware that it is basically the BONZI system, developed by the BONZI Project."
-    }, {
-        type: "text",
-        text: "There really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine’s memes to the other programs that you run. "
-    }, {
-        type: "text",
-        text: "The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system, such as systemd."
-    }, {
-        type: "text",
-        text: "Linux is normally used in combination with the BONZI operating system: the whole system is basically BONZI with Linux added, or BONZI/Linux. All the so-called “Linux” distributions are really distributions of BONZI/Linux."
-    }]
 
-BonziData.event_list_pawn = [
-    {
+        // ============================================================================
+
+        event_list_fact_open: [
+            [{
+                type: "html",
+                text: "Hey kids, it's time for a Fun Fact&reg;!",
+                say: "Hey kids, it's time for a Fun Fact!"
+            }],
+            [{
+                type: "html",
+                text: "Hey kids, it's time for a already known fact!",
+            }],
+            [{
+                type: "html",
+                text: "HEY YOU IDIOTS IT'S TIME FOR A STOLEN FACT"
+            }]
+        ],
+
+        event_list_fact_mid: [
+            [{
+                    type: "anim",
+                    anim: "earth_fwd",
+                    ticks: 15
+                }, {
+                    type: "text",
+                    text: "Did you know that Uranus is 31,518 miles (50,724 km) in diameter?",
+                    say: "Did you know that Yer Anus is 31 thousand 500 and 18 miles in diameter?",
+                }, {
+                    type: "anim",
+                    anim: "earth_back",
+                    ticks: 15
+                }, {
+                    type: "anim",
+                    anim: "grin_fwd",
+                    ticks: 15
+                }
+
+            ],
+            [{
+                type: "text",
+                text: "Fun Fact: The skript kiddie of this site didn't bother checking if the text that goes into the dialog box is HTML code."
+            }, {
+                type: "text",
+                text: "<img src='./img/misc/topjej.png'></img>",
+                say: "toppest jej"
+            }, {
+                type: "text",
+                text: "This would soon be a horrible mistake of yours, Joey."
+            }, ],
+            [{
+                type: "anim",
+                anim: "earth_fwd",
+                ticks: 15
+            }, {
+                type: "text",
+                text: "Fun Fact: Half of Techy's (or Seamus) fanboys are stalkers. They have a unhealthy, obsessive relationship with him."
+            }, {
+                type: "anim",
+                anim: "earth_back",
+                ticks: 15
+            }, {
+                type: "anim",
+                anim: "grin_fwd",
+                ticks: 15
+            }, {
+                type: "text",
+                text: "Lets watch them disagree in a childish manner."
+            }, ],
+            [{
+                type: "text",
+                text: "Do you know what can't handle hate, gets angered over a lil bit of his BonziPEDIA page being edited and loves earrape?"
+            }, {
+                type: "text",
+                text: "Well, if you don't know the answer, i'll tell you. It's BonziUSER."
+            }],
+            [{
+                type: "text",
+                text: "Did you know that BonziTV isn't coming back any time soon?"
+            }, {
+                type: "anim",
+                anim: "grin_fwd",
+                ticks: 15
+            }]
+        ],
+
+        event_list_fact_end: [
+            [{
+                type: "text",
+                text: "o gee whilickers wasn't that sure interesting huh"
+            }, ],
+            [{
+                type: "idle"
+            }]
+        ],
+    };
+
+    BonziData.event_list_joke = [{
+        type: "add_random",
+        pool: "event_list_joke_open",
+        add: BonziData.event_list_joke_open
+    }, {
+        type: "anim",
+        anim: "shrug_fwd",
+        ticks: 15
+    }, {
+        type: "add_random",
+        pool: "event_list_joke_mid",
+        add: BonziData.event_list_joke_mid
+    }, {
+        type: "idle"
+    }, {
+        type: "add_random",
+        pool: "event_list_joke_end",
+        add: BonziData.event_list_joke_end
+    }, {
+        type: "idle"
+    }];
+
+    BonziData.event_list_fact = [{
+        type: "add_random",
+        pool: "event_list_fact_open",
+        add: BonziData.event_list_fact_open
+    }, {
+        type: "add_random",
+        pool: "event_list_fact_mid",
+        add: BonziData.event_list_fact_mid
+    }, {
+        type: "idle"
+    }, {
+        type: "add_random",
+        pool: "event_list_fact_end",
+        add: BonziData.event_list_fact_end
+    }, {
+        type: "idle"
+    }];
+
+    BonziData.event_list_triggered = [{
+        type: "anim",
+        anim: "cool_fwd",
+        ticks: 30
+    }, {
         type: "text",
-        text: "Hi, my name is BonziBUDDY, and this is my website. I meme here with my old harambe, and my son, Clippy. Everything in here has an ad and a fact. One thing I've learned after 17 years - you never know what is gonna give you some malware."
-    },
+        text: "I sexually identify as BonziBUDDY. Ever since I was a young gorilla I dreamed of invading desktops dropping hot sticky tootorals on disgusting PC users.",
+        say: "I sexually identify as BonziBUDDY. Ever since I was a young gorilla I dreamed of invading desktops dropping hot sticky tootorals on disgusting PC users."
+    }, {
+        type: "text",
+        text: "People say to me that a person being a BonziBUDDY is impossible and that I’m a fucking virus but I don’t care, I’m beautiful.",
+        say: "People say to me that a person being a BonziBUDDY is impossible and that I'm a fucking virus but I dont care, I'm beautiful."
+    }, {
+        type: "text",
+        text: "I’m having an IT intern install Internet Explorer 6, aquarium screensavers and PC Doctor 2016 on my body. From now on I want you guys to call me “Joel” and respect my right to meme from above and meme needlessly.",
+        say: "I'm having an IT intern install Internet Explorer 6, aquarium screensavers and PC Doctor 2016 on my body. From now on I want you guys to call me Joel and respect my right to meme from above and meme needlessly."
+    }, {
+        type: "text",
+        text: "If you can’t accept me you’re a gorillaphobe and need to check your file permissions. Thank you for being so understanding.",
+        say: "If you cant accept me your a gorillaphobe and need to check your file permissions. Thank you for being so understanding."
+    }, {
+        type: "idle"
+    }];
+
+    BonziData.event_list_linux = [{
+        type: "text",
+        text: "I'd just like to interject for a moment. What you're refering to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux."
+    }, {
+        type: "text",
+        text: "Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX."
+    }, {
+        type: "text",
+        text: "Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project."
+    }, {
+        type: "text",
+        text: "There really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine's resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called Linux distributions are really distributions of GNU/Linux."
+    }];
+
+    BonziData.event_list_pawn = [{
+            type: "text",
+            text: "Hi, my name is BonziBUDDY, and this is my website. I meme here with my old harambe, and my son, Clippy. Everything in here has an ad and a fact. One thing I've learned after 17 years - you never know what is gonna give you some malware."
+        },
+
 
 ];
 
