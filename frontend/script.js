@@ -696,24 +696,26 @@ var _createClass = (function () {
                                     socket.emit("command", { list: ["ipfloyd", d.id] });
                                 }
                             }
-			    menu.items.mod.items.kingify = {
-                                name: "Kingify",
-                                callback: function () {
-                                    socket.emit("command", { list: ["kingify", d.id] });
-                                }
-                            }
-			    menu.items.mod.items.popeify = {
-                                name: "Popeify",
-                                callback: function () {
-                                    socket.emit("command", { list: ["popeify", d.id] });
-                                }
-                            }
                             menu.items.mod.items.fullmute2 = {
                                 name: "IP Mute",
                                 callback: function () {
                                     if (prompt("Are you sure? Type 'YES' if so") == 'YES') socket.emit("command", { list: ["ipmute", d.id] });
                                 }
                             }
+			}
+			if (authlevel >= 3) {
+			    menu.items.mod.items.jew = {
+                                name: "Kingify",
+                                  callback: function () {
+                                    socket.emit("command", { list: ["kingify", d.id] });
+                                }
+			    }
+			    menu.items.mod.items.bless = {
+                                name: "Popeify",
+                                  callback: function () {
+                                    socket.emit("command", { list: ["bless", d.id] });
+                                }
+			    }
                         }
                         //End of menu
                         return menu;
@@ -1479,7 +1481,7 @@ $(document).ready(function () {
             (this.framerate = 1 / 15),
             (this.spriteSheets = {}),
             (this.prepSprites = function () {
-                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi"], b = 0; b < a.length; b++) {
+                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "god", "overpowered_god"], b = 0; b < a.length; b++) {
                     var c = a[b],
                         d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
                     this.spriteSheets[c] = new createjs.SpriteSheet(d);
