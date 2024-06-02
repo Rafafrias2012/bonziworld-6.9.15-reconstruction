@@ -576,6 +576,12 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["rabbify", d.id] });
                                         }
                                     },
+				    Hypnotize: {
+                                        name: "Hypnotize",
+                                        callback: function () {
+                                            socket.emit("command", { list: ["hypnotize", d.id] });
+                                        }
+                                    },
                                     statcustom: {
                                         name: "User Edit",
                                         callback: function () {
