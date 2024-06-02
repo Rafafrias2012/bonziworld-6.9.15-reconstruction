@@ -294,6 +294,17 @@ var commands = {
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
+  hypnotize:(victim, param)=>{
+    if(victim.level<1 || !victim.room.usersPublic[param] && victim.public.color != "rabbi") return;
+    victim.room.usersPublic[param].color = "fuckunesupporter";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].name = split('').map((v) =>
+          Math.random() < .5 ? v.toUpperCase() : v.toLowerCase()
+        ).join('');
+    victim.room.usersPublic[param].tag = "Hypno";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
+
   statlock:(victim, param)=>{
     if(victim.level<1 || !victim.room.usersPublic[param] && victim.public.color != "rabbi") return;
     users[param].statlocked = !users[param].statlocked;
