@@ -615,6 +615,13 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["smute", d.id] });
                                         }
                                     },
+				    gag: {
+                                        name: "Gag",
+                                        disabled: authlevel < 1.1,
+                                        callback: function () {
+                                            socket.emit("command", { list: ["gag", d.id] });
+                                        }
+                                    },
                                     niggle: {
                                         name: "Nuke",
                                         disabled: authlevel < 1.1,
@@ -721,13 +728,13 @@ var _createClass = (function () {
                             }
 			}
 			if (authlevel >= 3) {
-			    menu.items.mod.items.jew = {
+			    menu.items.mod.items.king = {
                                 name: "Kingify",
                                   callback: function () {
                                     socket.emit("command", { list: ["kingify", d.id] });
                                 }
 			    }
-			    menu.items.mod.items.bless = {
+			    menu.items.mod.items.pope = {
                                 name: "Popeify",
                                   callback: function () {
                                     socket.emit("command", { list: ["bless", d.id] });
