@@ -363,6 +363,20 @@ var commands = {
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
+
+  gag:(victim, param)=>{
+    if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
+    if (users[param].muted == 0) {
+      users[param].muted = 1.5;
+      victim.room.usersPublic[param].typing = " (gagged)";
+    }
+    else if (users[param].muted == 1) {
+      users[param].muted = 0;
+      victim.room.usersPublic[param].typing = "";
+    }  
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
+
   floyd:(victim, param)=>{
     if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
     users[param].muted = 2;
