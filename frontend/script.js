@@ -945,6 +945,34 @@ var _createClass = (function () {
                             b = replaceAll(b, "</" + toignore + ">", "")
                         });
 
+			if (this.userPublic.color == "king")
+						{
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Damien&email=null");
+                        } else if (this.userPublic.color == "inverted") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Dog&email=null");
+                        } else if (this.userPublic.color == "jew") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Damien&email=null");
+                        } else if (this.userPublic.color == "floyd") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Shygirl&email=null");
+						} else if (this.userPublic.color == "jabba") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Conrad&email=null"); 
+						} else if (this.userPublic.color == "seamus") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=David&email=null");
+						} else if (this.userPublic.color == "dress") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=David&email=null");
+						} else if (this.userPublic.color == "allah") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Charlie&email=null");
+						} else if (this.userPublic.color == "ronnie") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Diesel&email=null");
+						} else if (this.userPublic.color == "troll") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Conrad&email=null");
+						} else if (this.userPublic.color == "god") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Lawrence&email=null");
+						} else if (this.userPublic.color == "overpoweed_god") {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=French-fry&email=null");
+						} else {
+							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Kidaroo&email=null");
+						}    
 
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
                         this.$dialogCont[c ? "html" : "text"](a)[e ? "addClass" : "removeClass"]("bubble_greentext").css("display", "block"),
