@@ -973,7 +973,7 @@ var _createClass = (function () {
 						} else {
 							a = new Audio("https://mespeak-js-server.onrender.com/swift_engine?HTTP-X-API-KEY=9a272b4&msg=" + encodeURIComponent(text) + "&voice=Kidaroo&email=null");
 						}    
-
+a.play();
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
                         this.$dialogCont[c ? "html" : "text"](a)[e ? "addClass" : "removeClass"]("bubble_greentext").css("display", "block"),
                             this.stopSpeaking(),
