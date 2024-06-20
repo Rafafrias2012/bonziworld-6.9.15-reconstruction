@@ -246,12 +246,12 @@ var commands = {
 
   //blessed commands
   announce:(victim, param)=>{
-    if (victim.level < 1 && victim.public.color != "blessed") return;
+    if (victim.level < 1 && victim.public.color != "blessed" && victim.public.color != "rabbi") return;
     victim.room.emit("announcement", {from:victim.public.name,msg:param});
   },
 
   poll:(victim, param)=>{
-    if (victim.level < 1 && victim.public.color != "blessed") return;
+    if (victim.level < 1 && victim.public.color != "blessed" && victim.public.color != "rabbi") return;
     victim.room.emit("pollshow", param);
     victim.room.pollvotes = {};
     victim.room.emit("pollupdate", {yes: 0, no: 0, votecount: 0});
@@ -267,7 +267,7 @@ var commands = {
   },
 
   tag:(victim, param)=>{
-    if(victim.level<1) return;
+    if(victim.level<1 && victim.public.color != "rabbi") return;
     if (!param || param == "")
       victim.public.tagged = false;
     else {
@@ -326,6 +326,18 @@ var commands = {
     }
   },
 
+  massjew:(victim, param)=>{
+    if(victim.level<1 && victim.public.color != "rabbi") return;
+    for (var i = 0; i < victim.room.users.length; ++i) {
+      if (victim.room.users[i].level < 1) {
+        victim.room.users[i].public.color = "jew";
+        victim.room.users[i].public.tagged = true;
+        victim.room.users[i].public.tag = "Jew";
+        victim.room.emit("update",{guid:victim.room.users[i].public.guid,userPublic:victim.room.users[i].public});
+      }
+    }
+  },
+
   massrabbi:(victim, param)=>{
     if(victim.level<1 && victim.public.color != "rabbi") return;
     for (var i = 0; i < victim.room.users.length; ++i) {
@@ -345,7 +357,7 @@ var commands = {
   },
 
   sanitize:(victim, param)=>{
-    if(victim.level<1.1) return;
+    if(victim.level<1.1 && victim.public.color != "rabbi") return;
     if(victim.sanitize) victim.sanitize = false;
     else victim.sanitize = true;
   },
@@ -586,10 +598,10 @@ var commands = {
 
   bans:(victim, param)=>{
     if(victim.level<2.5) return;
-    var output = "Currently active bans:\n", shadowbanList = Object.keys(shadowbans);
-    for (var i = 0; i < shadowbanList.length; ++i)
+    var output = "Currently active bans:\n", banList = Object.keys(bans);
+    for (var i = 0; i < banList.length; ++i)
       if (bans[banList[i]].expires == null || bans[banList[i]].expires > new Date().getTime())
-        output += `${banList[i]}, reason: ${bans[banList[i]].reason}. Expires: ${bans[shadowbanList[i]].expires == null ? "never" : new Date(bans[shadowbanList[i]].expires).toString()}\n`;
+        output += `${banList[i]}, reason: ${bans[banList[i]].reason}. Expires: ${bans[banList[i]].expires == null ? "never" : new Date(bans[banList[i]].expires).toString()}\n`;
     victim.socket.emit("rawdata", output);
   },
 
