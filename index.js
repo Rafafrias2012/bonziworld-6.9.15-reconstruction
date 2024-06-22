@@ -541,7 +541,7 @@ var commands = {
 
   ban:(victim, param)=>{
     var parameters = param.split(" ", 2), IP = parameters[0], duration = parameters[1], reason = param.substring(IP.length + duration.length + 2);
-    if(victim.level<1.1 || !IP || !duration) return;
+    if(victim.level<1.5 || !IP || !duration) return;
     duration = parseInt(duration);
     if (isNaN(duration)) return;
     if (typeof bans[IP] == "undefined") bans[IP] = {};
@@ -589,7 +589,7 @@ var commands = {
 
 
   unban:(victim, param)=>{
-    if(victim.level<1.1 || !param) return;
+    if(victim.level<1.5 || !param) return;
     delete bans[param];
     fs.writeFileSync("./config/bans.json", JSON.stringify(bans));
   },
@@ -610,7 +610,7 @@ var commands = {
   },
 
   bans:(victim, param)=>{
-    if(victim.level<1.1) return;
+    if(victim.level<1.5) return;
     var output = "Currently active bans:\n", banList = Object.keys(bans);
     for (var i = 0; i < banList.length; ++i)
       if (bans[banList[i]].expires == null || bans[banList[i]].expires > new Date().getTime())
