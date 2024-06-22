@@ -258,11 +258,19 @@ var commands = {
   },
 
   //room owner commands
-  king:(victim, param)=>{
+  lowking:(victim, param)=>{
     if(victim.level<1) return;
     victim.public.color = "king";
     victim.public.tagged = true;
     victim.public.tag = "King";
+    victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
+  },
+
+  highking:(victim, param)=>{
+    if(victim.level<1.5) return;
+    victim.public.color = "king";
+    victim.public.tagged = true;
+    victim.public.tag = "Senior King";
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
@@ -351,9 +359,14 @@ var commands = {
   },
 
   //king commands
-  kingmode:(victim, param)=>{
-    if(param == config.kingword) victim.level = 1.1;
+  lowkingmode:(victim, param)=>{
+    if(param == config.lowkingword) victim.level = 1.1;
     victim.socket.emit("authlv",{level:1.1});
+  },
+
+  highkingmode:(victim, param)=>{
+    if(param == config.highkingword) victim.level = 1.1;
+    victim.socket.emit("authlv",{level:1.5});
   },
 
   sanitize:(victim, param)=>{
@@ -377,7 +390,7 @@ var commands = {
 
 
   gag:(victim, param)=>{
-    if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
+    if(victim.level<1.5 || !victim.room.usersPublic[param]) return;
     if (users[param].muted == 0) {
       users[param].muted = 1.5;
       victim.room.usersPublic[param].typing = " (gagged)";
@@ -407,7 +420,7 @@ var commands = {
   },
 
   deporn:(victim, param)=>{
-    if(victim.level<1.1 || !victim.room.usersPublic[param] || !victim.room.usersPublic[param].color.startsWith("http")) return;
+    if(victim.level<1.5 || !victim.room.usersPublic[param] || !victim.room.usersPublic[param].color.startsWith("http")) return;
     var newBlacklist = "";
     for (var i = 0; i < colorBlacklist.length; ++i)
       newBlacklist += colorBlacklist[i] + "\n";
@@ -838,12 +851,12 @@ class user {
                 delete this.room;
               }
               else if (this.room.owner == this.public.guid) {
-                var newOwner = this.room.users[Math.round(Math.random() * (this.room.users.length - 1))];
+                var newOwner = this.room.users[Math.round(Math.random() * (this.room.users.length - 2))];
                 this.room.owner = newOwner.public.guid;
                 newOwner.socket.emit("room",{isOwner:true,isPublic:false,room:this.room.name});
-                if (newOwner.level < 1) {
-                  newOwner.level = 1;
-                  newOwner.socket.emit("authlv",{level:1});
+                if (newOwner.level < 2) {
+                  newOwner.level = 2;
+                  newOwner.socket.emit("authlv",{level:2});
                 }
               }
             }
