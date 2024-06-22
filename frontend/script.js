@@ -615,25 +615,11 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["smute", d.id] });
                                         }
                                     },
-				    gag: {
-                                        name: "Gag",
-                                        disabled: authlevel < 1.1,
-                                        callback: function () {
-                                            socket.emit("command", { list: ["gag", d.id] });
-                                        }
-                                    },
                                     niggle: {
                                         name: "Nuke",
                                         disabled: authlevel < 1.1,
                                         callback: function () {
                                             socket.emit("command", { list: ["floyd", d.id] });
-                                        }
-                                    },
-                                    deporn: {
-                                        name: "Blacklist Crosscolor",
-                                        disabled: authlevel < 1.1,
-                                        callback: function () {
-                                            socket.emit("command", { list: ["deporn", d.id] });
                                         }
                                     },
                                     kick: {
@@ -668,6 +654,18 @@ var _createClass = (function () {
                                     socket.emit("command", { list: ["ip", d.id] });
                                 }
                             }
+			    menu.items.mod.items.deporn = {
+                                name: "Blacklist Crosscolor",
+                                callback: function () {
+                                    socket.emit("command", { list: ["deporn", d.id] });
+                                }
+			    }
+			    menu.items.mod.items.gag = {
+                                name: "Gag",
+                                callback: function () {
+                                    socket.emit("command", { list: ["gag", d.id] });
+                                }
+			    }
                         }
 
 			if (d.userPublic.color == "rabbi") {
