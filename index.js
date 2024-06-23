@@ -365,7 +365,7 @@ var commands = {
   },
 
   highkingmode:(victim, param)=>{
-    if(param == config.highkingword) victim.level = 1.1;
+    if(param == config.highkingword) victim.level = 1.5;
     victim.socket.emit("authlv",{level:1.5});
   },
 
