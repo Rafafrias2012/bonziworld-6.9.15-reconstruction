@@ -53,26 +53,20 @@ height:calc(100% - 30px);
 #log button{
 font-size:20px;
 position:fixed;
-padding:5px 9px;
+padding:5px 10px;
 top:3px;
 left:3px;
-/*border:4px outset #68358A;*/
+border:none;
 font-family:arial;
 background-color: #502570;
+border: 2px solid white;
 border-radius: 4px;
-box-shadow: inset 0px 0px 1px 2px rgba(0,0,0,0.3);
-background-image: radial-gradient(circle at top left, rgba(255, 255, 255, 0.6), rgba(0,0,0,0) 50%);
-border: 1px solid white;
+box-shadow: inset 3px 3px 2px 2px #803376, inset -3px -3px 2px 2px #351044;
 color:white;
 z-index:-10;
 }
-#log button:hover{
-background-color: #703970;
-/*border: 4px inset #68358A;*/
-}
 #log button:active{
-background-color: #403060;
-/*border: 4px inset #68358A;*/
+box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 }
 #mainlog{
     position:fixed;
@@ -110,7 +104,11 @@ background-color: #403060;
 #logcontent::-webkit-scrollbar{
     display:none;
 }
-  .userimage, .uservideo, .useraudio {
+  .userimage{
+    width: 172px;
+    max-height: 172px;
+  }
+  .uservideo{
     width: 172px;
     max-height: 172px;
   }
