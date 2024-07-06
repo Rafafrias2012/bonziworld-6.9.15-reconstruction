@@ -471,9 +471,9 @@ var commands = {
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
-  overpowered_god:(victim, param)=>{
+  ownergod:(victim, param)=>{
     if(victim.level<3) return;
-    victim.public.color = "overpowered_god";
+    victim.public.color = "superomegagod";
     victim.public.tagged = true;
     victim.public.tag = "Owner";
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
