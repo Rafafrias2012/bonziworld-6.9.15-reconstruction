@@ -270,7 +270,7 @@ var commands = {
     if(victim.level<1.5) return;
     victim.public.color = "king";
     victim.public.tagged = true;
-    victim.public.tag = "Senior King";
+    victim.public.tag = "$r$King$r$";
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
