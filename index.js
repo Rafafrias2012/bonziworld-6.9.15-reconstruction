@@ -279,8 +279,14 @@ var commands = {
     if (!param || param == "")
       victim.public.tagged = false;
     else {
+      if (victim.markup) {
+      victim.public.tagged = true;
+      victim.public.tag = markup(param);
+    }
+    else {
       victim.public.tagged = true;
       victim.public.tag = param;
+     }
     }
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public});
   },
