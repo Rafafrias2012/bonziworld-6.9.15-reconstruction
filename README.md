@@ -1,7 +1,8 @@
 # BonziWORLD.org Recreation
 A high-quality replica of BonziWORLD.org, made by Frankensteining [Fune's open-source server rewrite](https://github.com/Funyegg/BonziWORLD-Server) with the BonziWORLD.org client then remaking all BonziWORLD.org functionality from scratch.
 
-Made by SeamusIsANigger.
+Made by ItzFafaelScout.
+Orginally By SIAN
 
 # Dependencies
 Node JS, Socket.io and That's it!
