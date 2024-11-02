@@ -164,6 +164,60 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
         90%{color: #FF00FF;}
         100%{color: red;}
     }
+
+.xp-window {
+  position: absolute;
+  min-width: 200px;
+  min-height: 100px;
+  background: #ECE9D8;
+  border: 1px solid #000;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.xp-titlebar {
+  height: 30px;
+  background: linear-gradient(180deg, #7B4EA8 0%, #5F3B82 100%);
+  border-radius: 8px 8px 0 0;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+}
+
+.xp-title {
+  color: white;
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.xp-close {
+  width: 21px;
+  height: 21px;
+  background: #FFE100;
+  border: 1px solid #000;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.xp-close:hover {
+  background: #FFD700;
+}
+
+.xp-close:active {
+  background: #FFC700;
+}
+
+.xp-content {
+  padding: 8px;
+}
+
 </style>
 </head>
 <body>
