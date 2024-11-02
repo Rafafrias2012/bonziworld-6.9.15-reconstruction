@@ -172,6 +172,73 @@ function errorFatal() {
     if ($("#page_ban").css("display") == "none" && $("#page_shadowban").css("display") == "none" && $("#page_kick").css("display") == "none")
         $("#page_error").show();
 }
+class XPWindow {
+  constructor(title) {
+    this.element = document.createElement('div');
+    this.element.className = 'xp-window';
+    
+    this.titlebar = document.createElement('div');
+    this.titlebar.className = 'xp-titlebar';
+    
+    this.titleText = document.createElement('span');
+    this.titleText.className = 'xp-title';
+    this.titleText.textContent = title;
+    
+    this.closeBtn = document.createElement('div');
+    this.closeBtn.className = 'xp-close';
+    this.closeBtn.innerHTML = '✕';
+    this.closeBtn.onclick = () => this.close();
+    
+    this.content = document.createElement('div');
+    this.content.className = 'xp-content';
+    
+    this.titlebar.appendChild(this.titleText);
+    this.titlebar.appendChild(this.closeBtn);
+    this.element.appendChild(this.titlebar);
+    this.element.appendChild(this.content);
+    
+    this.makeDraggable();
+    document.body.appendChild(this.element);
+  }
+
+  makeDraggable() {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
+    this.titlebar.onmousedown = dragMouseDown.bind(this);
+
+    function dragMouseDown(e) {
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag.bind(this);
+    }
+
+    function elementDrag(e) {
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      this.element.style.top = (this.element.offsetTop - pos2) + "px";
+      this.element.style.left = (this.element.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+
+  setContent(html) {
+    this.content.innerHTML = html;
+  }
+
+  close() {
+    this.element.remove();
+  }
+}
+
 function setup() {
     $("#chat_send").click(sendInput),
         $("#chat_message").keypress(function (a) {
