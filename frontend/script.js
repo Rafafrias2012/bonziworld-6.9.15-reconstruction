@@ -261,11 +261,10 @@ function setup() {
         socket.on("update", function (a) {
             (window.usersPublic[a.guid] = a.userPublic), usersUpdate(), BonziHandler.bonzisCheck();
         }),
-        socket.on("announcement", function (a) {
-            $("#announcement").show();
-            $("#ancon").html("Announcement From: " + a.from);
-            $("#ancontent").html(a.msg);
-        }),
+        socket.on("announcement", function(data) {
+        const window = new XPWindow("Announcement From: " + data.from);
+        window.setContent(data.msg);
+        });
         socket.on("emote", a => {
             var torun = emotes.find(tofind => { return tofind.name == a.type });
             if (!(torun == undefined)) bonzis[a.guid.toString()].runSingleEvent(torun.action);
