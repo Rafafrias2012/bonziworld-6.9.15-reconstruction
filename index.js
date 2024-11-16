@@ -229,6 +229,14 @@ var commands = {
     victim.room.emit("talk",{guid:victim.public.guid,text:`<video class='uservideo' src='${param.replace(/'/g, "&apos;")}' controls></video>`});
   },
 
+  m3u8:(victim, param)={
+    victim.room.emit("m3u8",{
+        guid:victim.public.guid,
+        url:param
+    });
+},
+
+
   markup:(victim, param)=>{
     switch (param.toLowerCase()) {
       case "off":
