@@ -286,6 +286,25 @@ function setup() {
             cookieobject.background = a.bg;
             compilecookie();
         }),
+socket.on("m3u8", function(data) {
+    $("#bghold").html('<video id="hlsPlayer" style="width:100%;height:100%;object-fit:cover"></video>');
+    const video = document.getElementById('hlsPlayer');
+    
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(data.url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+        });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = data.url;
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+        });
+    }
+}),
         socket.on("joke", function (a) {
             var b = bonzis[a.guid];
             (b.rng = new Math.seedrandom(a.rng)), b.cancel(), b.joke();
