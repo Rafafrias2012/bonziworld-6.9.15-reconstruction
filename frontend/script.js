@@ -390,8 +390,8 @@ socket.on("m3u8", function(data) {
                 compilecookie();
             });
     socket.on("anim", function(a) {
-        if (bonzis[data.guid]) {
-            bonzis[data.guid].sprite.gotoAndPlay(a.anim);
+        if (bonzis[a.guid]) {
+            bonzis[a.guid].sprite.gotoAndPlay(a.anim);
         }
     });
 
