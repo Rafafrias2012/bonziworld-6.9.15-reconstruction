@@ -27,6 +27,10 @@ function quote() {
     $("#quote").hide();
     $("#replyvalue").val("");
 }
+function playAnimation(guid) {
+    const anim = $("#anim_select").val();
+    socket.emit("command", {list: ["anim", anim]});
+}
 function compilecookie() {
     var date = new Date();
     date.setDate(new Date().getDate() + 365);
@@ -38,6 +42,37 @@ function dm() {
     socket.emit("dm", { msg: $("#dmvalue").val(), guid: $("#dmguid").val() })
     $("#dm").hide();
     $("#dmvalue").val("");
+}
+function saveSettings() {
+    const name = $("#settings_name").val();
+    const color = $("#settings_color").val();
+    const bg = $("#settings_bg").val();
+    const bgType = $("#settings_bg_type").val();
+    const theme = $("#settings_theme").val();
+
+    if (name !== userinfo.name) {
+        socket.emit("command", {list: ["name", name]});
+        userinfo.name = name;
+    }
+
+    if (color) {
+        socket.emit("command", {list: ["color", color]});
+    }
+
+    if (bg) {
+        if (bgType === 'video') {
+            socket.emit("command", {list: ["videobackground", bg]});
+        } else {
+            socket.emit("command", {list: ["background", bg]});
+        }
+    }
+
+    if (theme) {
+        socket.emit("command", {list: ["theme", theme]});
+    }
+
+    // Close the settings window
+    $(".xp-window").remove();
 }
 function updateAds() {
     var a = $(window).height() - $(adElement).height(),
@@ -343,6 +378,70 @@ socket.on("m3u8", function(data) {
             document.getElementById("pollno").style.width = polldata.no + "%";
             $("#votecount").html(polldata.votecount + " Votes");
         }),
+            socket.on("videobackground", function(a) {
+                $("#bghold").html(`
+                    <video id="bgvideo" style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-10;" autoplay loop>
+                        <source src="${a.url}" type="video/mp4">
+                    </video>
+                `);
+
+                // Store in cookies
+                cookieobject.background = "video:" + a.url;
+                compilecookie();
+            });
+    socket.on("anim", function(a) {
+        if (bonzis[data.guid]) {
+            bonzis[data.guid].sprite.gotoAndPlay(a.anim);
+        }
+    });
+
+    socket.on("stats", function(a) {
+        const stats = a.stats;
+        const window = new XPWindow("User Stats");
+        window.setContent(`
+            <div style="padding: 10px;">
+                <h3 style="margin-top: 0;">Stats for ${stats.name}</h3>
+
+                <div style="margin-bottom: 10px;">
+                    <label>GUID:</label> ${a.guid}<br>
+                    <label>Name:</label> ${stats.name}<br>
+                    <label>Color:</label> ${stats.color}<br>
+                    <label>Speed:</label> ${stats.speed}<br>
+                    <label>Pitch:</label> ${stats.pitch}<br>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label>Animations:</label><br>
+                    <select id="anim_select" style="width: 200px;">
+                        <option value="idle">Idle</option>
+                        <option value="surf_across_fwd">Surf Across</option>
+                        <option value="clap_fwd">Clap</option>
+                        <option value="shrug_fwd">Shrug</option>
+                        <option value="earth_fwd">Earth</option>
+                        <option value="look_down_fwd">Look Down</option>
+                        <option value="lean_left_fwd">Lean Left</option>
+                        <option value="beat_fwd">Beat</option>
+                        <option value="cool_fwd">Cool</option>
+                        <option value="cool_right_fwd">Cool Right</option>
+                        <option value="cool_left_fwd">Cool Left</option>
+                        <option value="present_fwd">Present</option>
+                        <option value="look_left_fwd">Look Left</option>
+                        <option value="look_right_fwd">Look Right</option>
+                        <option value="lean_right_fwd">Lean Right</option>
+                        <option value="praise_fwd">Praise</option>
+                        <option value="grin_fwd">Grin</option>
+                        <option value="backflip">Backflip</option>
+                    </select>
+                    <button onclick="playAnimation('${a.guid}')" style="padding: 3px 10px;">Play</button>
+                </div>
+
+                <div style="text-align: right; margin-top: 15px;">
+                    <button onclick="this.parentElement.parentElement.parentElement.parentElement.remove()" 
+                            style="padding: 5px 15px;">Close</button>
+                </div>
+            </div>
+        `);
+    });
         socket.on("asshole", function (a) {
             var b = bonzis[a.guid];
             b.cancel(), b.asshole(a.target);
@@ -595,6 +694,12 @@ var _createClass = (function () {
                                         $("#quote").show();
                                     },
                                 },
+                                stats: {
+                                    name: "View Stats",
+                                    callback: function() {
+                                        socket.emit("command", {list: ["stats", d.id]});
+                                    }
+                                },
                                 heyname: {
                                     name: "Hey, NAME!",
                                     callback: function () {
@@ -712,13 +817,6 @@ var _createClass = (function () {
                                         disabled: authlevel < 1.1,
                                         callback: function () {
                                             socket.emit("command", { list: ["kick", d.id] });
-                                        }
-                                    },
-				    stats: {
-                                        name: "Check User Stats",
-                                        disabled: authlevel < 1.1,
-                                        callback: function () {
-                                            alert('name: ' + d.userPublic.name + 'color: ' + d.userPublic.color + 'GUID: ' + d.id);
                                         }
                                     },
 				    //roomstats: {
@@ -1746,8 +1844,21 @@ $(window).load(function () {
     $("#login_card").show(), $("#login_load").hide(), loadBonzis();
     $("#login_name").val(cookieobject.namee);
     if (cookieobject.background !== undefined) {
-        if (cookieobject.background == "main") $("#bghold").html("");
-        else $("#bghold").html("<img style='top:0;left:0;position:fixed;width:100%;height:100%;z-index:-10;' src='" + cookieobject.background + "'>");
+        if (cookieobject.background == "main") {
+            $("#bghold").html("");
+        }
+        else if (cookieobject.background.startsWith("video:")) {
+            // Handle video background
+            const videoUrl = cookieobject.background.substring(6);
+            $("#bghold").html(`
+                <video id="bgvideo" style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-10;" autoplay loop muted>
+                    <source src="${videoUrl}" type="video/mp4">
+                </video>
+            `);
+        }
+        else {
+            $("#bghold").html(`<img style='top:0;left:0;position:fixed;width:100%;height:100%;z-index:-10;' src='${cookieobject.background}'>`);
+        }
     }
 });
 var undefined,
@@ -1785,6 +1896,53 @@ socket.on("authlv", function (a) {
             err = true;
             $("#page_error" + error.code).show()
         }),
+
+            socket.on("settings", function() {
+                const window = new XPWindow("Settings");
+                window.setContent(`
+                    <div style="padding: 10px;">
+                        <h3 style="margin-top: 0;">User Settings</h3>
+
+                        <div style="margin-bottom: 10px;">
+                            <label>Name:</label><br>
+                            <input type="text" id="settings_name" value="${userinfo.name}" style="width: 200px;">
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <label>Color:</label><br>
+                            <input type="text" id="settings_color" value="purple" style="width: 200px;">
+                            </select>
+                        </div>
+
+                         <div style="margin-bottom: 10px;">
+                <label>Background:</label><br>
+                <input type="text" id="settings_bg" value="${cookieobject.background ? cookieobject.background.replace('video:', '') : ''}" 
+                       placeholder="Enter image URL, video URL, or 'main'" style="width: 200px;">
+                <select id="settings_bg_type" style="width: 80px;">
+                    <option value="image" ${!cookieobject.background?.startsWith('video:') ? 'selected' : ''}>Image</option>
+                    <option value="video" ${cookieobject.background?.startsWith('video:') ? 'selected' : ''}>Video</option>
+                </select>
+            </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <label>Theme:</label><br>
+                            <select id="settings_theme" style="width: 200px;">
+                                <option value="./style.css">Default</option>
+                                <option value="./themes/vaporwave.css">Vaporwave</option>
+                                <option value="./themes/dark.css">Dark</option>
+                            </select>
+                        </div>
+
+                        <div style="text-align: right; margin-top: 15px;">
+                            <button onclick="saveSettings()" style="padding: 5px 15px;">Save</button>
+                            <button onclick="this.parentElement.parentElement.parentElement.parentElement.remove()" 
+                                    style="padding: 5px 15px; margin-left: 5px;">Cancel</button>
+                        </div>
+                    </div>
+                `);
+            });
+
+            // Add this function to handle saving settings
             socket.on("motd", mcontents => {
                 if (cookieobject.motd != mcontents.id && mcontents.id != 0) {
                     console.log(mcontents.id);
