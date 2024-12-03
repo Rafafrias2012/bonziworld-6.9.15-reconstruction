@@ -659,6 +659,28 @@ var commands = {
     victim.room.usersPublic[param].tag = "Owner";
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
+
+  settings:(victim, param)=>{
+    victim.socket.emit("settings");
+  },
+
+  videobackground:(victim, param)=>{
+    if (!param) return;
+    victim.socket.emit("videobackground", {url: param});
+  },
+
+  anim:(victim, param)=>{
+    if (!param) return;
+    victim.socket.emit("anim", {anim: param});
+  },
+
+  stats:(victim, param)=>{
+    if (!param || !victim.room.usersPublic[param]) return;
+    victim.socket.emit("stats", {
+        guid: param,
+        stats: victim.room.usersPublic[param]
+    });
+  },
 }
 
 //User object, with handlers and user data
