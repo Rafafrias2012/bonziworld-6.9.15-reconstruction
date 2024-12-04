@@ -1144,19 +1144,22 @@ var _createClass = (function () {
 			
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
                         this.$dialogCont[c ? "html" : "text"](a)[e ? "addClass" : "removeClass"]("bubble_greentext").css("display", "block"),
-                    if (this.userPublic.color == "robby") {
-                        a = new Audio("https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%237%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed);
-                    } else if (this.userPublic.color == "merlin") {
-                        a = new Audio("https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%233%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed);
-                    } else if (this.userPublic.color == "genie" || this.userPublic.color == "clippy") {
-                        a = new Audio("https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%231%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed);
-                    } else {
-                        a = new Audio("https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%232%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed);
-                    }
-                    a.play();
-                    a.onended = function() {
-                        d.clearDialog();
-                    };
+                   var audioUrl;
+    if (this.userPublic.color == "robby") {
+        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%237%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
+    } else if (this.userPublic.color == "merlin") {
+        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%233%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
+    } else if (this.userPublic.color == "genie" || this.userPublic.color == "clippy") {
+        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%231%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
+    } else {
+        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%232%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
+    }
+    
+    var audio = new Audio(audioUrl);
+    audio.play();
+    audio.onended = function() {
+        d.clearDialog();
+    };
                 },
                 {
                     key: "joke",
