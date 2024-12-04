@@ -1123,13 +1123,12 @@ var _createClass = (function () {
                             (a = replaceAll(a, "{COLOR}", this.color)),
                             "undefined" != typeof b ? ((b = replaceAll(b, "{NAME}", this.userPublic.name)), (b = replaceAll(b, "{COLOR}", this.color))) : (b = a.replace("&gt;", "")),
 
-			    const url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
-        encodeURIComponent(b) + 
-        "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
-        "&pitch=140&speed=157";
-    
-    const audio = new Audio(url);
+			    var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
+    encodeURIComponent(b) + 
+    "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
+    "&pitch=140&speed=157";
 
+var audio = new Audio(url);
                             //document.getElementById("logcontent").innerHTML += "<p><font color='"+this.userPublic.color+"'>"+this.userPublic.name+": </font>"+a+"</p>";
                             document.getElementById("logcontent").insertAdjacentHTML("beforeend", "<p><font color='" + this.userPublic.color + "'>" + this.userPublic.name + "#"+this.id+": </font>" + a + "</p>");
                         if (toscroll) document.getElementById("logcontent").scrollTop = document.getElementById("logcontent").scrollHeight;
