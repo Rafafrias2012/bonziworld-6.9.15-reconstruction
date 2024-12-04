@@ -2003,23 +2003,24 @@ $(document).ready(function () {
             (this.spriteSheets = {}),
             (this.prepSprites = function () {
                 for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "god", "superomegagod", "fuckunesupporter", "dress", "peedy", "clippy", "genie", "merlin", "robby"], b = 0; b < a.length; b++) {
-                    var c = a[b],
+                    var c = a[b];  // Removed the comma here
+                    var d;
                     if (c == 'peedy') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.peedy.animations };
-                        } else if (c == 'clippy') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.clippy.frames, animations: BonziData.sprite.clippy.animations };
-                        } else if (c == 'genie') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.genie.frames, animations: BonziData.sprite.genie.animations };
-                        } else if (c == 'merlin') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.merlin.frames, animations: BonziData.sprite.merlin.animations };
-                        } else if (c == 'robby') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.robby.frames, animations: BonziData.sprite.robby.animations };
-		        } else  {
-                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
-                        };
-                        this.spriteSheets[c] = new createjs.SpriteSheet(d);
+                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.peedy.animations };
+                    } else if (c == 'clippy') {
+                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.clippy.frames, animations: BonziData.sprite.clippy.animations };
+                    } else if (c == 'genie') {
+                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.genie.frames, animations: BonziData.sprite.genie.animations };
+                    } else if (c == 'merlin') {
+                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.merlin.frames, animations: BonziData.sprite.merlin.animations };
+                    } else if (c == 'robby') {
+                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.robby.frames, animations: BonziData.sprite.robby.animations };
+                    } else {
+                        d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
+                    }
+                    this.spriteSheets[c] = new createjs.SpriteSheet(d);
                 }
-            }),
+	    });
             this.prepSprites(),
             (this.$canvas = $("#bonzi_canvas")),
             (this.stage = new createjs.StageGL(this.$canvas[0], { transparent: !0 })),
