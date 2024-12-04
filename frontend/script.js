@@ -1116,7 +1116,6 @@ var _createClass = (function () {
                 {
                     key: "talk",
                     value: function (a, b, c) {
-			this.stopSpeaking();
                         var d = this;
                         var toscroll = document.getElementById("logcontent").scrollHeight - document.getElementById("logcontent").scrollTop < 605;
                         (c = c || !1),
@@ -1141,25 +1140,25 @@ var _createClass = (function () {
                             b = replaceAll(b, "<" + toignore + ">", "")
                             b = replaceAll(b, "</" + toignore + ">", "")
                         });
+
+			var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
+            encodeURIComponent(b) + 
+            "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
+            "&pitch=140&speed=157",
+        audio = new Audio(url);
 			
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
                         this.$dialogCont[c ? "html" : "text"](a)[e ? "addClass" : "removeClass"]("bubble_greentext").css("display", "block"),
-                   var audioUrl;
-    if (this.userPublic.color == "robby") {
-        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%237%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
-    } else if (this.userPublic.color == "merlin") {
-        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%233%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
-    } else if (this.userPublic.color == "genie" || this.userPublic.color == "clippy") {
-        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%231%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
-    } else {
-        audioUrl = "https://tetyys.com/SAPI4/SAPI4?text=" + encodeURIComponent(b) + "&voice=Adult%20Male%20%232%2C%20American%20English%20(TruVoice)&pitch=" + this.userPublic.pitch + "&speed=" + this.userPublic.speed;
-    }
+                            this.stopSpeaking(),
+                            (this.goingToSpeak = !0),
+                            audio.play();
     
-    var audio = new Audio(audioUrl);
-    audio.play();
-    audio.onended = function() {
+    audio.onended = () => {
         d.clearDialog();
     };
+    
+    this.voiceSource = audio;
+                    },
                 },
                 {
                     key: "joke",
