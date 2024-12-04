@@ -18,6 +18,8 @@ const userinfo = {
     name: "",
     room: ""
 }
+const joinSound = new Audio('https://ia803401.us.archive.org/34/items/intro-2_202405/0018.mp3');
+const leaveSound = new Audio('https://ia803401.us.archive.org/34/items/intro-2_202405/0019.mp3');
 
 document.cookie.split("; ").forEach((cookieitem) => {
     cookieobject[cookieitem.substring(0, cookieitem.indexOf("="))] = decodeURIComponent(cookieitem.substring(cookieitem.indexOf("=") + 1, cookieitem.length))
@@ -300,6 +302,9 @@ function setup() {
         }),
         socket.on("update", function (a) {
             (window.usersPublic[a.guid] = a.userPublic), usersUpdate(), BonziHandler.bonzisCheck();
+	    if (!bonzis[a.guid]) {
+        joinSound.play();
+    }
         }),
         socket.on("announcement", function(data) {
         const window = new XPWindow("Announcement From: " + data.from);
@@ -483,14 +488,19 @@ socket.on("m3u8", function(data) {
         });
 
         socket.on("leave", function (a) {
-            var b = bonzis[a.guid];
-            "undefined" != typeof b &&
-                b.exit(
-                    function (a) {
-                        this.deconstruct(), delete bonzis[a.guid], delete usersPublic[a.guid], usersUpdate();
-                    }.bind(b, a)
-                );
-        }),
+    var b = bonzis[a.guid];
+    "undefined" != typeof b &&
+        b.exit(
+            function (a) {
+                this.deconstruct();
+                delete bonzis[a.guid];
+                delete usersPublic[a.guid];
+                usersUpdate();
+                // Play leave sound
+                leaveSound.play();
+            }.bind(b, a)
+        );
+});
 
         socket.on("000", () => {
             //Scary shit
