@@ -2020,7 +2020,7 @@ $(document).ready(function () {
                     }
                     this.spriteSheets[c] = new createjs.SpriteSheet(d);
                 }
-	    });
+	    }),
             this.prepSprites(),
             (this.$canvas = $("#bonzi_canvas")),
             (this.stage = new createjs.StageGL(this.$canvas[0], { transparent: !0 })),
