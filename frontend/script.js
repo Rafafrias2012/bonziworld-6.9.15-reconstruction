@@ -1141,10 +1141,27 @@ var _createClass = (function () {
                             b = replaceAll(b, "</" + toignore + ">", "")
                         });
 
+			let voiceParams;
+    switch(this.userPublic.color) {
+        case 'clippy':
+        case 'merlin':
+            voiceParams = "Adult Male #3, American English (TruVoice)";
+            break;
+        case 'genie':
+            voiceParams = "Adult Male #1, American English (TruVoice)";
+            break;
+        case 'robby':
+            voiceParams = "Adult Male #7, American English (TruVoice)";
+            break;
+        default:
+            voiceParams = "Adult Male #2, American English (TruVoice)";
+    }
+
 			var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
-            encodeURIComponent(b) + 
-            "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
-            "&pitch=140&speed=157",
+        encodeURIComponent(b) +
+        "&voice=" + encodeURIComponent(voiceParams) +
+        "&pitch=" + this.userPublic.pitch + 
+        "&speed=" + this.userPublic.speed;
         audio = new Audio(url);
 			
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
