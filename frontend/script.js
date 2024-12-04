@@ -1118,11 +1118,6 @@ var _createClass = (function () {
                     value: function (a, b, c) {
                         var d = this;
                         var toscroll = document.getElementById("logcontent").scrollHeight - document.getElementById("logcontent").scrollTop < 605;
-			var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
-        encodeURIComponent(b) + 
-        "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
-        "&pitch=140&speed=157",
-                        var audio = new Audio(url),
                         (c = c || !1),
                             (a = replaceAll(a, "{NAME}", this.userPublic.name)),
                             (a = replaceAll(a, "{COLOR}", this.color)),
@@ -1146,6 +1141,11 @@ var _createClass = (function () {
                             b = replaceAll(b, "</" + toignore + ">", "")
                         });
 
+			var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
+            encodeURIComponent(b) + 
+            "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
+            "&pitch=140&speed=157",
+        audio = new Audio(url);
 			
                         var e = "&gt;" == a.substring(0, 4) || ">" == a[0];
                         this.$dialogCont[c ? "html" : "text"](a)[e ? "addClass" : "removeClass"]("bubble_greentext").css("display", "block"),
