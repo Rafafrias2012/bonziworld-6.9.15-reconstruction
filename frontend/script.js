@@ -1118,17 +1118,16 @@ var _createClass = (function () {
                     value: function (a, b, c) {
                         var d = this;
                         var toscroll = document.getElementById("logcontent").scrollHeight - document.getElementById("logcontent").scrollTop < 605;
+			var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
+        encodeURIComponent(b) + 
+        "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
+        "&pitch=140&speed=157",
+                        var audio = new Audio(url);
                         (c = c || !1),
                             (a = replaceAll(a, "{NAME}", this.userPublic.name)),
                             (a = replaceAll(a, "{COLOR}", this.color)),
                             "undefined" != typeof b ? ((b = replaceAll(b, "{NAME}", this.userPublic.name)), (b = replaceAll(b, "{COLOR}", this.color))) : (b = a.replace("&gt;", "")),
 
-			    var url = "https://www.tetyys.com/SAPI4/SAPI4?text=" + 
-    encodeURIComponent(b) + 
-    "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
-    "&pitch=140&speed=157";
-
-var audio = new Audio(url);
                             //document.getElementById("logcontent").innerHTML += "<p><font color='"+this.userPublic.color+"'>"+this.userPublic.name+": </font>"+a+"</p>";
                             document.getElementById("logcontent").insertAdjacentHTML("beforeend", "<p><font color='" + this.userPublic.color + "'>" + this.userPublic.name + "#"+this.id+": </font>" + a + "</p>");
                         if (toscroll) document.getElementById("logcontent").scrollTop = document.getElementById("logcontent").scrollHeight;
