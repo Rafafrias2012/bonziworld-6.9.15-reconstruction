@@ -17,3 +17,8 @@ troll
 white
 yellow
 dress
+peedy
+clippy
+genie
+merlin
+robby
