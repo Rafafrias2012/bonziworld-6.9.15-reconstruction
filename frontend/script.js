@@ -1122,7 +1122,7 @@ var _createClass = (function () {
         encodeURIComponent(b) + 
         "&voice=" + encodeURIComponent("Adult Male #2, American English (TruVoice)") + 
         "&pitch=140&speed=157",
-                        var audio = new Audio(url);
+                        var audio = new Audio(url),
                         (c = c || !1),
                             (a = replaceAll(a, "{NAME}", this.userPublic.name)),
                             (a = replaceAll(a, "{COLOR}", this.color)),
