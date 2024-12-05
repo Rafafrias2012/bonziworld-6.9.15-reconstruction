@@ -76,6 +76,13 @@ function saveSettings() {
     // Close the settings window
     $(".xp-window").remove();
 }
+$(document).on('mousemove', function(e) {
+            const currentTime = Date.now();
+            if (currentTime - lastMouseMoveTime > 500) { // 500ms between sounds
+                $('#cursor-sound')[0].play();
+                lastMouseMoveTime = currentTime;
+            }
+        });
 function updateAds() {
     var a = $(window).height() - $(adElement).height(),
         b = a <= 250;
@@ -2147,15 +2154,18 @@ socket.on("authlv", function (a) {
                 13 == a.which && login();
             }),
             socket.on("ban", function (a) {
+		$('#kick-ban-sound')[0].play();
                 $("#page_ban").show(), $("#ban_reason").html(a.reason), $("#ban_end").html(a.end == null ? "Never" : new Date(a.end).toString());
             }),
 	    socket.on("shadowban", function (a) {
                 $("#page_shadowban").show(), $("#shadowban_reason").html(a.reason), $("#shadowban_end").html(a.end == null ? "Never" : new Date(a.end).toString());
             }),
             socket.on("kick", function (a) {
+		$('#kick-ban-sound')[0].play();
                 $("#page_kick").show(), $("#kicked_by").html(a);
             }),
             socket.on("login_error", error => {
+		$('#kick-ban-sound')[0].play();
                 $("#login_card").show();
                 $("#login_load").hide();
                 $("#login_error").html("ERROR: " + error);
@@ -2230,6 +2240,7 @@ socket.on("authlv", function (a) {
                 compilecookie();
             })
         socket.on("disconnect", function (a) {
+	    $('#error-sound')[0].play();
             if (err == false) errorFatal();
         });
 
