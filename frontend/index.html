@@ -34,6 +34,10 @@
         </script>
 
 <style>
+@font-face {
+    font-family: "ms-sans-serif-1";
+    src: url("./ms-sans-serif-1.ttf");
+}
   
 span{
 font-size:12px;
@@ -166,53 +170,62 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
         100%{color: red;}
     }
 
-	.xp-window {
-			position: absolute;
-			min-width: 300px;
-			background: #ECE9D8;
-			border: 1px solid #000;
-			border-radius: 8px 8px 0 0;
-			box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			z-index: 1000;
-	}
+.xp-window {
+    position: absolute;
+    min-width: 300px;
+    background: #ECE9D8;
+    border: 3px solid #7B4EA8;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    font-family: "ms-sans-serif-1", Tahoma, sans-serif;
+}
 
-	.xp-titlebar {
-			height: 30px;
-			background: linear-gradient(180deg, #7B4EA8 0%, #5F3B82 100%); /* Purple gradient */
-			border-radius: 8px 8px 0 0;
-			padding: 0 8px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			cursor: move;
-	}
+.xp-titlebar {
+    height: 30px;
+    background: linear-gradient(180deg, #7B4EA8 0%, #5F3B82 100%);
+    border-radius: 6px 6px 0 0;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: move;
+    font-family: "Trebuchet MS", Tahoma, sans-serif;
+}
 
-	.xp-close {
-		width: 21px;
-		height: 21px;
-		background: linear-gradient(180deg, #FFE100 0%, #FFA800 100%); /* Yellow gradient */
-		border: 1px solid #000;
-		border-radius: 3px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		color: #000;
-		font-family: "Tahoma", sans-serif;
-		font-size: 12px;
-		font-weight: bold;
-	}
+.xp-title {
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
 
-	.xp-close:hover {
-		background: linear-gradient(180deg, #FFD700 0%, #FF8C00 100%); /* Darker yellow on hover */
-	}
+.xp-close {
+    width: 21px;
+    height: 21px;
+    background: linear-gradient(180deg, #FFE100 0%, #FFA800 100%);
+    border: 1px solid #7B4EA8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
 
-	.xp-close:active {
-		background: linear-gradient(180deg, #FF8C00 0%, #FFD700 100%); /* Inverted gradient when clicked */
-	}
+.xp-close:hover {
+    background: linear-gradient(180deg, #FFD700 0%, #FF8C00 100%);
+}
+
+.xp-close:active {
+    background: linear-gradient(180deg, #FF8C00 0%, #FFD700 100%);
+}
 
 	/* Add styles for form elements */
 	.xp-content input[type="text"],
@@ -667,7 +680,7 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
     overflow-x: hidden;
     overflow-y: auto;
     font-size: 14px;
-    font-family: "Microsoft Sans Serif", sans-serif;
+    font-family: "ms-sans-serif-1", sans-serif;
     font-smooth: never;
     -webkit-font-smoothing: none;
     position: relative;
@@ -734,7 +747,7 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 			padding: 8px;
 			position: absolute;
 			background: #ffffe1;
-			font-family: "MS Sans Serif", Tahoma, sans-serif;
+			font-family: "ms-sans-serif-1", Tahoma, sans-serif;
 			font-size: 12px;
 			color: #000; }
 
@@ -824,6 +837,7 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 			box-sizing: border-box;
 			color: #fff;
 			font-style: italic;
+			font-family: "Arial", sans-serif;
 			font-weight: bold;
 			letter-spacing: 2px;
 			font-size: 16px;
@@ -838,10 +852,12 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 			padding: 4px; }
 
 		#chat_message {
+			font-family: "ms-sans-serif-1", Tahoma, sans-serif;
 			width: 100%; }
 
 		#room_info {
 			color: rgba(255, 255, 255, 0.5);
+			font-family: "Trebuchet MS", Tahoma, sans-serif;
 			font-weight: bold;
 			line-height: 125%;
 			text-align: right;
@@ -998,6 +1014,7 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 
 			#login_load {
 				margin-top: 45px;
+				font-family: "Arial", Tahoma, sans-serif;
 				margin-left: 0;
 				transform: translateX(-50%);
 				-webkit-transform: translateX(-50%); } }
@@ -1051,7 +1068,7 @@ box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
 			border: 1px solid #aca899;
 			border-radius: 0;
 			box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-			font-family: inherit;
+			font-family: "ms-sans-serif-1", Tahoma, sans-serif;
 			font-size: 11px;
 			display: inline-block;
 			list-style-type: none;
