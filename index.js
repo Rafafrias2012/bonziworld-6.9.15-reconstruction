@@ -12,7 +12,7 @@ var motd = JSON.parse(fs.readFileSync("./config/motd.json"));
 if(blacklist.includes("")) blacklist = []; //If the blacklist has a blank line, ignore the whole list.
 
 var markup = require("./markup.js");
-var sendLogToDiscord = require("./discordwebhoook.js")
+var sendLogToDiscord = require("./discordwebhook.js")
 
 //Variables
 var rooms = {};
