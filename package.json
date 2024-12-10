@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^18.0.6",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.8.1",
+    "axios": "^1.7.9",
+    "https": "^1.0.0",
+    "url": "^0.11.4"
   }
 }
