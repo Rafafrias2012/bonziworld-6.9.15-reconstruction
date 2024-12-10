@@ -12,6 +12,7 @@ var motd = JSON.parse(fs.readFileSync("./config/motd.json"));
 if(blacklist.includes("")) blacklist = []; //If the blacklist has a blank line, ignore the whole list.
 
 var markup = require("./markup.js");
+var sendLogToDiscord = require("./discordwebhoook.js")
 
 //Variables
 var rooms = {};
@@ -756,6 +757,7 @@ class user {
             isPublic:isPublicRoom(this.room.name)
           });
           this.room.emit("serverdata",{count:this.room.users.length});
+          sendLogToDiscord(`${logdata.name} is joined`, 'info', logdata.name);
         });
       
       //talk
@@ -783,6 +785,7 @@ class user {
           //talk
             if(!this.slowed){
               this.room.emit("talk", { guid: this.public.guid, text: msg.text });
+              sendLogToDiscord(`${msg.text}`, 'info', this.public.name);
               this.lastMessage = msg.text;
         this.slowed = true;
         setTimeout(()=>{
@@ -877,6 +880,7 @@ class user {
           if (this.loggedin) {
             delete this.room.usersPublic[this.public.guid];
             this.room.emit("leave", { guid: this.public.guid });
+            sendLogToDiscord(`${logdata.name} is leaved`, 'info', logdata.name);
             this.room.users.splice(this.room.users.indexOf(this), 1);
             this.room.emit("serverdata",{count:this.room.users.length});
             clearInterval(this.nuked);
@@ -975,3 +979,5 @@ function filtertext(tofilter){
 function isPublicRoom(id) {
   return id == "default" || id == "desanitize";
 }
+
+
